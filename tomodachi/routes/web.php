@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Front;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [Front\HomeController::class, 'index']);
+Route::get('/about', function () {
+    return view('front.about');
 });
-Route::get('/test', function () {
-    
-});
+
+// Route::get('/test', function () {
+//     return \App\Models\FoodItem::find(3)->Category;
+// });
