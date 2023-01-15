@@ -1,7 +1,7 @@
 <?php
 
-@include ('front.components.connect');
-session_start();    
+@include 'front.components.connect';
+session_start();
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
@@ -35,7 +35,7 @@ $conn = new PDO($db_name, $user_name, $user_password);
 
 <body>
 
-   @include('front.components.user_header');
+    @include('front.components.user_header');
 
     <section class="hero">
 
@@ -89,33 +89,14 @@ $conn = new PDO($db_name, $user_name, $user_password);
         <h1 class="title">food category</h1>
 
         <div class="box-container">
-
-            <a href="category.php?category=fast food" class="box">
-                <img src="front/images/cat-1.png" alt="">
-                <h3>fast food</h3>
-            </a>
-
-            <a href="category.php?category=main dish" class="box">
-                <img src="front/images/cat-2.png" alt="">
-                <h3>main dishes</h3>
-            </a>
-
-            <a href="category.php?category=drinks" class="box">
-                <img src="front/images/cat-3.png" alt="">
-                <h3>drinks</h3>
-            </a>
-
-            <a href="category.php?category=desserts" class="box">
-                <img src="front/images/cat-4.png" alt="">
-                <h3>desserts</h3>
-            </a>
-
+            @foreach ($categories as $category)
+                <a href="category.php?category={{$category->name}}" class="box">
+                    <img src="front/images/{{ $category->image }}" alt="">
+                    <h3>{{ $category->name }}</h3>
+                </a>
+            @endforeach
         </div>
-
     </section>
-
-
-
 
     <section class="products">
 
@@ -162,7 +143,7 @@ $conn = new PDO($db_name, $user_name, $user_password);
 
     </section>
 
-     @include ('front.components.footer');
+    @include ('front.components.footer');
 
 
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
