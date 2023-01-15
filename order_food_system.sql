@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 21, 2022 lúc 09:51 AM
+-- Thời gian đã tạo: Th1 15, 2023 lúc 02:16 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 7.4.25
 
@@ -29,8 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(500) NOT NULL
+  `name` varchar(500) NOT NULL,
+  `image` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `image`) VALUES
+(1, 'fast food', 'cat-1.png'),
+(2, 'main dishes', 'cat-2.png'),
+(3, 'drinks', 'cat-3.png'),
+(4, 'desserts', 'cat-4.png');
 
 -- --------------------------------------------------------
 
@@ -65,6 +76,14 @@ CREATE TABLE `fooditem` (
   `url` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `fooditem`
+--
+
+INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`) VALUES
+(1, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'pic-1.png'),
+(2, 1, 'delicious pizza 02', 2, 'ngon lam', 100000, 'pic-2.png');
+
 -- --------------------------------------------------------
 
 --
@@ -76,7 +95,7 @@ CREATE TABLE `foodorder` (
   `cs_id` int(11) NOT NULL,
   `total_price` float NOT NULL,
   `note` text NOT NULL,
-  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `created_at` date NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -158,7 +177,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `customer`
@@ -170,7 +189,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT cho bảng `fooditem`
 --
 ALTER TABLE `fooditem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `foodorder`
