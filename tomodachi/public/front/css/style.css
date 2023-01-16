@@ -999,8 +999,23 @@ section{
 .loader img{
    height: 25rem;
 }
+/* quick view */
 
+.qv-food-all {
+   /* width: 100vh; */
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+}
 
+.food-image {
+   width: 300px;
+   height: 300px;
+}
+
+.food-info form {
+   min-width: 40rem;
+}
 
 /* media queries  */
 
