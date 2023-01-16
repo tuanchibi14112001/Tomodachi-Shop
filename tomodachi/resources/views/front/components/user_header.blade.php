@@ -24,7 +24,7 @@ $conn = new PDO($db_name, $user_name, $user_password);
 
       <nav class="navbar">
          <a href="/">home</a>
-         <a href="about">about</a>
+         <a href="shop/about">about</a>
          <a href="menu.php">menu</a>
          <a href="orders.php">orders</a>
          <a href="contact.php">contact</a>
