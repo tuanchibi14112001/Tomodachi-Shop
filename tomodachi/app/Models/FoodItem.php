@@ -12,7 +12,7 @@ class FoodItem extends Model
     protected $primaryKey = "id";
     protected $guarded = [];
 
-    public function Category(){
+    public function category(){
         return $this->belongsTo(Category::class, 'cate_id', 'id');
     }
 }
