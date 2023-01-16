@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 16, 2023 lúc 02:14 AM
+-- Thời gian đã tạo: Th1 16, 2023 lúc 02:45 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 7.4.25
 
@@ -73,16 +73,18 @@ CREATE TABLE `fooditem` (
   `quantity` int(11) NOT NULL DEFAULT 0,
   `description` text NOT NULL,
   `price` float NOT NULL,
-  `url` text NOT NULL
+  `url` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `fooditem`
 --
 
-INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`) VALUES
-(1, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'burger-1.png'),
-(2, 1, 'delicious pizza 02', 2, 'ngon lam', 100000, 'burger-2.png');
+INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`, `created_at`, `updated_at`) VALUES
+(1, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'burger-1.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(2, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00');
 
 -- --------------------------------------------------------
 

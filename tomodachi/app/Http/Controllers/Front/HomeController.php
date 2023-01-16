@@ -14,7 +14,7 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         //dd($category);
-        $new_foods =  FoodItem::orderByDESC('id')->limit(10)->get();
+        $new_foods =  FoodItem::orderByDESC('created_at')->limit(10)->get();
         // dd($new_foods);
         return view('front.home', [
             'categories' => $categories,
