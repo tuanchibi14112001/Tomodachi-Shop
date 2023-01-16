@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 15, 2023 lúc 02:16 PM
+-- Thời gian đã tạo: Th1 16, 2023 lúc 02:14 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 7.4.25
 
@@ -81,8 +81,8 @@ CREATE TABLE `fooditem` (
 --
 
 INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`) VALUES
-(1, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'pic-1.png'),
-(2, 1, 'delicious pizza 02', 2, 'ngon lam', 100000, 'pic-2.png');
+(1, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'burger-1.png'),
+(2, 1, 'delicious pizza 02', 2, 'ngon lam', 100000, 'burger-2.png');
 
 -- --------------------------------------------------------
 
