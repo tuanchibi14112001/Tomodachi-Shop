@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front;
+use App\Models\FoodItem;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,9 @@ Route::get('/', [Front\HomeController::class, 'index']);
 Route::get('/about', function () {
     return view('front.about');
 });
-
+// Route::get('/test', function () {
+//     return FoodItem::find(1)->category['name'];
+// });
 // Route::get('/test', function () {
 //     return \App\Models\FoodItem::find(3)->Category;
 // });
