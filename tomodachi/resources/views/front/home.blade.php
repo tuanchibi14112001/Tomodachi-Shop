@@ -104,7 +104,7 @@ if (isset($_SESSION['user_id'])) {
                         <input type="hidden" name="name" value=" {{ $new_food->name }}">
                         <input type="hidden" name="price" value=" {{ $new_food->price }}">
                         <input type="hidden" name="image" value=" {{ $new_food->url }}">
-                        <a href="quick_view.php?pid= {{ $new_food->id }}" class="fas fa-eye"></a>
+                        <a href="/shop/quick_view/food_id={{ $new_food->id }}" class="fas fa-eye"></a>
                         <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
                         <img src="front/uploaded_img/{{ $new_food->url }}" alt="">
                         <a href="category.php?category= {{ $new_food->category['name'] }}" class="cat">
