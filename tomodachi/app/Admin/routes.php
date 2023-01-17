@@ -13,7 +13,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('category', CategoryController::class);
-   
-   
 
 });

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front;
+use App\Http\Controllers\Front\ShopController;
+use App\Models\FoodItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [Front\HomeController::class, 'index']);
+
+Route::get('/shop/about', function () {
+    return view('front.shop.about');
 });
+
+Route::get('/shop/quick_view/food_id={id}', [ShopController::class, 'quick_view']);
+// Route::get('/test', function () {
+//     return FoodItem::find(1)->category['name'];
+// });
+// Route::get('/test', function () {
+//     return \App\Models\FoodItem::find(3)->Category;
+// });

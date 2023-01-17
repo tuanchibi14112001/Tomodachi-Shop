@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class FoodItem extends Model
 {
     use HasFactory;
-    protected $table = "category";
-    public $timestamps = false;
+    protected $table = "fooditem";
     protected $primaryKey = "id";
     protected $guarded = [];
 
-    public function FoodItems()
-    {
-        return $this->hasMany(FoodItem::class, 'cate_id', 'id');
+    public function category(){
+        return $this->belongsTo(Category::class, 'cate_id', 'id');
     }
 }

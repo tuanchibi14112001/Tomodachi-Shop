@@ -28,8 +28,9 @@ class CategoryController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
-        $grid->column('created_at', __('Created at'))->default(date('Y-m-d H:i:s'));
-        $grid->column('update_at', __('Update at'));
+        $grid->column('image', __('Image'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -46,8 +47,9 @@ class CategoryController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
+        $show->field('image', __('Image'));
         $show->field('created_at', __('Created at'));
-        $show->field('update_at', __('Update at'))  ;
+        $show->field('updated_at', __('Updated at'));
 
         return $show;
     }
@@ -62,7 +64,7 @@ class CategoryController extends AdminController
         $form = new Form(new Category());
 
         $form->text('name', __('Name'));
-        // $form->datetime('update_at', __('Update at'))->default(date('Y-m-d H:i:s'));
+        $form->image('image', __('Image'));
 
         return $form;
     }
