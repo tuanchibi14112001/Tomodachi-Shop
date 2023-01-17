@@ -7,7 +7,7 @@
         @if ($food != null)
             <div class="qv-food-all">
                 <div class="image">
-                    <img class="food-image" src="front/uploaded_img/{{ $food->url }} " alt="">
+                    <img class="food-image" src="uploads/{{ $food->url }} " alt="">
                 </div>
                 <div class="food-info">
                     <form action="" method="post" class="box" class="qv-food-info">
