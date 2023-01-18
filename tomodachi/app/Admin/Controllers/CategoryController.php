@@ -28,7 +28,7 @@ class CategoryController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
-        $grid->column('image', __('Image'));
+        $grid->column('image', __('Image'))->image('',60,60);
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -65,7 +65,8 @@ class CategoryController extends AdminController
 
         $form->text('name', __('Name'));
         $form->image('image', __('Image'));
-
+        $form->datetime('updated_at',__('Updated At'));
+        
         return $form;
     }
 }
