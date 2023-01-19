@@ -11,7 +11,7 @@
                 <div class="content">
                     <span>order online</span>
                     <h3>delicious pizza</h3>
-                    <a href="menu.html" class="btn">see menus</a>
+                    <a href="/shop/menu/1" class="btn">see menus</a>
                 </div>
                 <div class="image">
                     <img src="front/images/home-img-1.png" alt="">
@@ -22,7 +22,7 @@
                 <div class="content">
                     <span>order online</span>
                     <h3>chezzy hamburger</h3>
-                    <a href="menu.html" class="btn">see menus</a>
+                    <a href="/shop/menu/1" class="btn">see menus</a>
                 </div>
                 <div class="image">
                     <img src="front/images/home-img-2.png" alt="">
@@ -33,7 +33,7 @@
                 <div class="content">
                     <span>order online</span>
                     <h3>rosted chicken</h3>
-                    <a href="menu.html" class="btn">see menus</a>
+                    <a href="/shop/menu/1" class="btn">see menus</a>
                 </div>
                 <div class="image">
                     <img src="front/images/home-img-3.png" alt="">
@@ -54,7 +54,7 @@
 
     <div class="box-container">
         @foreach ($categories as $category)
-            <a href="category.php?category={{ $category->name }}" class="box">
+            <a href="/shop/menu/{{ $category->id }}" class="box">
                 <img src="uploads/{{ $category->image }}" alt="">
                 <h3>{{ $category->name }}</h3>
             </a>
@@ -77,7 +77,7 @@
                     <a href="/shop/quick_view/food_id={{ $new_food->id }}" class="fas fa-eye"></a>
                     <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
                     <img src="uploads/{{ $new_food->url }}" alt="">
-                    <a href="category.php?category= {{ $new_food->category['name'] }}" class="cat">
+                    <a href="/shop/menu/{{ $new_food->category['id'] }}" class="cat">
                         {{ $new_food->category['name'] }}</a>
                     <div class="name"> {{ $new_food->name }}</div>
                     <div class="flex">
@@ -93,7 +93,7 @@
     </div>
 
     <div class="more-btn">
-        <a href="menu.html" class="btn">view all</a>
+        <a href="/shop/menu/1" class="btn">view all</a>
     </div>
 
 </section>
