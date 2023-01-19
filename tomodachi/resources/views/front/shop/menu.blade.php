@@ -36,25 +36,7 @@
             @foreach ($foods as $food)
                 @if ($food->cate_id == $category->id)
                     
-                        <form action="" method="post" class="box">
-                            <form action="" method="post" class="box">
-                                <input type="hidden" name="pid" value="{{ $food->id }}">
-                                <input type="hidden" name="name" value=" {{ $food->name }}">
-                                <input type="hidden" name="price" value=" {{ $food->price }}">
-                                <input type="hidden" name="image" value=" {{ $food->url }}">
-                                <a href="/shop/quick_view/food_id={{ $food->id }}" class="fas fa-eye"></a>
-                                <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
-                                <img src="uploads/{{ $food->url }}" alt="">
-                                <a href="category.php?category= {{ $food->category['name'] }}" class="cat">
-                                    {{ $food->category['name'] }}</a>
-                                <div class="name"> {{ $food->name }}</div>
-                                <div class="flex">
-                                    <div class="price"><span>$</span> {{ $food->price }}</div>
-                                    <input type="number" name="qty" class="qty" min="1" max="99"
-                                        value="1" maxlength="2">
-                                </div>
-                            </form>
-                        </form>
+                @include('front.components.food_items',['food_item'=>$food])
 
                     
                 @endif

@@ -55,7 +55,7 @@
     <div class="box-container">
         @foreach ($categories as $category)
             <a href="/shop/menu/{{ $category->id }}" class="box">
-                <img src="uploads/{{ $category->image }}" alt="">
+                <img src="uploads/images/{{ $category->image }}" alt="">
                 <h3>{{ $category->name }}</h3>
             </a>
         @endforeach
@@ -69,23 +69,7 @@
     <div class="box-container">
         @if ($new_foods != null)
             @foreach ($new_foods as $new_food)
-                <form action="" method="post" class="box">
-                    <input type="hidden" name="pid" value="{{ $new_food->id }}">
-                    <input type="hidden" name="name" value=" {{ $new_food->name }}">
-                    <input type="hidden" name="price" value=" {{ $new_food->price }}">
-                    <input type="hidden" name="image" value=" {{ $new_food->url }}">
-                    <a href="/shop/quick_view/food_id={{ $new_food->id }}" class="fas fa-eye"></a>
-                    <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
-                    <img src="uploads/{{ $new_food->url }}" alt="">
-                    <a href="/shop/menu/{{ $new_food->category['id'] }}" class="cat">
-                        {{ $new_food->category['name'] }}</a>
-                    <div class="name"> {{ $new_food->name }}</div>
-                    <div class="flex">
-                        <div class="price"><span>$</span> {{ $new_food->price }}</div>
-                        <input type="number" name="qty" class="qty" min="1" max="99" value="1"
-                            maxlength="2">
-                    </div>
-                </form>
+                @include('front.components.food_items',['food_item'=>$new_food])
             @endforeach
         @else
             <p class="empty">no products added yet!</p>
