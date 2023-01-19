@@ -23,6 +23,8 @@ Route::get('/shop/about', function () {
 });
 
 Route::get('/shop/quick_view/food_id={id}', [ShopController::class, 'quick_view']);
+
+Route::get('/shop/menu/{id}', [ShopController::class, 'menu']);
 // Route::get('/test', function () {
 //     return FoodItem::find(1)->category['name'];
 // });
