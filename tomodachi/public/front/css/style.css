@@ -929,10 +929,13 @@ section {
 }
 
 .quick-view form .cart-btn:hover {
-   background-color: var(--black);
+   background-color: var(--yellow);
    color: var(--white);
 }
-
+.quick-view form .cart-btn a{
+   text-decoration: none;
+   color: inherit;
+}
 
 
 
