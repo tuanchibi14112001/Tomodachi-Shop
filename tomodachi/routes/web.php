@@ -35,5 +35,8 @@ Route::get('/shop/menu/{id}', [ShopController::class, 'menu']);
 
 Route::prefix('cart')->name("cart.")->group(function () {
     Route::get('/', [CartController::class,'index'])->name('index');
-    Route::post('/add', [CartController::class,'add'])->name('add');
+    Route::get('/add', [CartController::class,'add'])->name('add');
+    Route::get('/delete/{rowId}', [CartController::class,'delete'])->name('delete');
+    Route::get('/destroy', [CartController::class,'destroy'])->name('destroy');
+    Route::get('/update', [CartController::class,'update'])->name('update');
 });
