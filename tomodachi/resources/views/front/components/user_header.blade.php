@@ -26,6 +26,8 @@ $conn = new PDO($db_name, $user_name, $user_password);
     <base href="{{ asset('/') }}">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="front/css/style.css">
+    <script src="front/js/jquery.min.js"></script>
+
 
 </head>
 
@@ -44,18 +46,21 @@ $conn = new PDO($db_name, $user_name, $user_password);
                 <a href="orders.php">orders</a>
                 <a href="contact.php">contact</a>
             </nav>
-
             <div class="icons">
-                {{-- <?php
-                $user_id = 1;
-                $count_cart_items = $conn->prepare('SELECT * FROM `cart` WHERE user_id = ?');
-                $count_cart_items->execute([$user_id]);
-                $total_cart_items = $count_cart_items->rowCount();
-                ?> --}}
-                <a href="search.php"><i class="fas fa-search"></i></a>
-                <a href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i><span>0</span></a>
-                <div id="user-btn" class="fas fa-user"></div>
-                <div id="menu-btn" class="fas fa-bars"></div>
+                <a href="search.php"><i class="fas fa-search icon"></i></a>
+                <a href="#" id="cart"
+                    class="show-cart icon @if (Route::current()->getName() == 'cart.index') disabled @endif"><i
+                        class="fas fa-shopping-cart"></i><span>({{ Cart::count() }})</span></a>
+
+                <div id="user-btn" class="fas fa-user icon"></div>
+                <div id="menu-btn" class="fas fa-bars icon"></div>
+                <div class="left_nav">
+
+                    @include('front.components.header_cart', [
+                        'carts' => Cart::content(),
+                        'cart_total' => Cart::total(),
+                    ])
+                </div>
             </div>
 
             <div class="profile">

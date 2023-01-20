@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\FoodItem;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeController extends Controller
 {
@@ -16,9 +17,13 @@ class HomeController extends Controller
         //dd($category);
         $new_foods =  FoodItem::orderByDESC('created_at')->limit(10)->get();
         // dd($new_foods);
+        $carts=Cart::content();
+        $cart_total=Cart::total();
         return view('front.home', [
             'categories' => $categories,
             'new_foods'  => $new_foods,
+            'carts' => $carts,
+            'cart_total' => $cart_total
         ]);
     }
 }
