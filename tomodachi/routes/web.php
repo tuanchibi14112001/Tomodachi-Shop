@@ -2,10 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front;
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
-use App\Models\FoodOrder;
-use App\Models\OrderDetail;
-use App\Models\FoodItem;
 
 /*
 /*
@@ -35,8 +33,7 @@ Route::get('/shop/menu/{id}', [ShopController::class, 'menu']);
 //     return \App\Models\FoodItem::find(3)->Category;
 // });
 
-Route::prefix('cart')->group(function () {
-    Route::get('/add/{id}', function ($id) {
-        return "them $id";
-    })->name('cart.add');
+Route::prefix('cart')->name("cart.")->group(function () {
+    Route::get('/', [CartController::class,'index'])->name('index');
+    Route::post('/add', [CartController::class,'add'])->name('add');
 });
