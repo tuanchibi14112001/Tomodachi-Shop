@@ -55,7 +55,7 @@
     <div class="box-container">
         @foreach ($categories as $category)
             <a href="/shop/menu/{{ $category->id }}" class="box">
-                <img src="uploads/images/{{ $category->image }}" alt="">
+                <img src="uploads/{{ $category->image }}" alt="">
                 <h3>{{ $category->name }}</h3>
             </a>
         @endforeach
