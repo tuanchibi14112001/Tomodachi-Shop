@@ -5,7 +5,7 @@
     <input type="hidden" name="image" value=" {{ $food_item->url }}">
     <a href="/shop/quick_view/food_id={{ $food_item->id }}" class="fas fa-eye"></a>
     <a href="{{route('cart.add',['id'=>$food_item->id])}}" class="fas fa-shopping-cart"></a>
-    <img src="uploads/images/{{ $food_item->url }}" alt="">
+    <img src="uploads/{{ $food_item->url }}" alt="">
     <a href="/shop/menu/{{ $food_item->category['id'] }}" class="cat">
         {{ $food_item->category['name'] }}</a>
     <div class="name"> {{ $food_item->name }}</div>
