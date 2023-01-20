@@ -79,9 +79,11 @@ $conn = new PDO($db_name, $user_name, $user_password);
             }else{
          ?>
                 <p class="name">please login first!</p>
-                <a href="login.php" class="btn">login</a>
+                <a href="register" class="btn">register</a>
+                <a href="login" class="btn">login</a>
+
                 <?php
-          }
+            }
          ?>
             </div>
 

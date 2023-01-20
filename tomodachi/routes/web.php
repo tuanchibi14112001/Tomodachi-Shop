@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
+use App\Http\Controllers\Front\CustomAuthController;
 
 /*
 /*
@@ -37,3 +38,6 @@ Route::prefix('cart')->name("cart.")->group(function () {
     Route::get('/', [CartController::class,'index'])->name('index');
     Route::post('/add', [CartController::class,'add'])->name('add');
 });
+
+Route::get('/login', [CustomAuthController::class, 'login']);
+Route::get('/register', [CustomAuthController::class, 'register']);
