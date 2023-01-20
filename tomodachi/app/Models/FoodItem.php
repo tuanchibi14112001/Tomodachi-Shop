@@ -9,6 +9,7 @@ class FoodItem extends Model
 {
     use HasFactory;
     protected $table = "fooditem";
+    public $timestamps = false;
     protected $primaryKey = "id";
     protected $guarded = [];
 
