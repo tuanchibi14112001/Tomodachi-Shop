@@ -46,15 +46,14 @@ $conn = new PDO($db_name, $user_name, $user_password);
             </nav>
 
             <div class="icons">
-                <?php
+                {{-- <?php
                 $user_id = 1;
                 $count_cart_items = $conn->prepare('SELECT * FROM `cart` WHERE user_id = ?');
                 $count_cart_items->execute([$user_id]);
                 $total_cart_items = $count_cart_items->rowCount();
-                ?>
+                ?> --}}
                 <a href="search.php"><i class="fas fa-search"></i></a>
-                <a href="{{ route('cart.index') }}"><i
-                        class="fas fa-shopping-cart"></i><span>(<?= $total_cart_items ?>)</span></a>
+                <a href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i><span>0</span></a>
                 <div id="user-btn" class="fas fa-user"></div>
                 <div id="menu-btn" class="fas fa-bars"></div>
             </div>
