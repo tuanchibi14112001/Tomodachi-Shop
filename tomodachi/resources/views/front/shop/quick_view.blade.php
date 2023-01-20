@@ -7,14 +7,15 @@
         @if ($food != null)
             <div class="qv-food-all">
                 <div class="image">
-                    <img class="food-image" src="uploads/images/{{ $food->url }} " alt="">
+                    <img class="food-image" src="uploads/{{ $food->url }} " alt="">
                 </div>
                 <div class="food-info">
-                    <form action="" method="post" class="box" class="qv-food-info">
+                    <form action="{{ route('cart.add') }}" method="post" class="box" class="qv-food-info">
                         <input type="hidden" name="pid" value="{{ $food->id }} ">
                         <input type="hidden" name="name" value="{{ $food->name }} ">
                         <input type="hidden" name="price" value="{{ $food->price }} ">
                         <input type="hidden" name="image" value="{{ $food->url }} ">
+                        {{ csrf_field() }}
                         <a href="category.php?category={{ $food->category->name }} "
                             class="cat">{{ $food->category->name }} </a>
                         <div class="name">{{ $food->name }} </div>
@@ -24,8 +25,8 @@
                             <input type="number" name="qty" class="qty" min="1" max="99" value="1"
                                 maxlength="2">
                         </div>
-                        <button name="add_to_cart" class="cart-btn"><a href="{{route('cart.add',['id'=>$food->id])}}" >Add To Cart</a></button>
-                        
+                        <button type="submit" name="add_to_cart" class="cart-btn">Add To Cart</button>
+
                     </form>
                 </div>
             </div>

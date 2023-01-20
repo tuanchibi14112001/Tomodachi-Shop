@@ -1,11 +1,12 @@
-<form action="" method="post" class="box">
+<form action="{{ route('cart.add') }}" method="post" class="box">
     <input type="hidden" name="pid" value="{{ $food_item->id }}">
     <input type="hidden" name="name" value=" {{ $food_item->name }}">
     <input type="hidden" name="price" value=" {{ $food_item->price }}">
     <input type="hidden" name="image" value=" {{ $food_item->url }}">
+    {{ csrf_field() }}
     <a href="/shop/quick_view/food_id={{ $food_item->id }}" class="fas fa-eye"></a>
-    <a href="{{route('cart.add',['id'=>$food_item->id])}}" class="fas fa-shopping-cart"></a>
-    <img src="uploads/images/{{ $food_item->url }}" alt="">
+    <button type="submit" class="fas fa-shopping-cart"></button>
+    <img src="uploads/{{ $food_item->url }}" alt="">
     <a href="/shop/menu/{{ $food_item->category['id'] }}" class="cat">
         {{ $food_item->category['name'] }}</a>
     <div class="name"> {{ $food_item->name }}</div>
