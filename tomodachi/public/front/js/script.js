@@ -95,6 +95,8 @@ function updateCart(rowId, newVal, parent) {
             qty: newVal,
         },
         success: function (respone) {
+            $subtotal = parent.find(".sub-total span");
+            $subtotal.html("$" + respone.sub_total);
             $(".cart-total span").html("$" + respone.total_price);
             $(".icons a span").html("(" + respone.count + ")");
 

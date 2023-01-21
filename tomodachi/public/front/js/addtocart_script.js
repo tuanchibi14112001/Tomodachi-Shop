@@ -23,8 +23,6 @@ function updateHeaderCart(rowId, newVal, parent) {
             qty: newVal,
         },
         success: function (respone) {
-            $subtotal = parent.find(".sub-total span");
-            $subtotal.html("$" + respone.sub_total);
             $(".icons a span").html("(" + respone.count + ")");
             $("#header-total-price").html("$" + respone.total_price);
 
