@@ -45,7 +45,7 @@
                 </div>
             </div>
             <a href="{{ route('cart.index') }}" class="checkout_button">View cart</a>
-            <a href="#" class="checkout_button">Checkout</a>
+            <a href="{{ route('checkout') }}" class="checkout_button">Checkout</a>
         @else
             <p>Cart is empty!</p>
         @endif

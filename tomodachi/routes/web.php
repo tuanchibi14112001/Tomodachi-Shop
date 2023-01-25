@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
+use App\Http\Controllers\Front\CheckoutController;
+use App\Http\Controllers\Front\OrderController;
+
 
 /*
 /*
@@ -39,4 +42,9 @@ Route::prefix('cart')->name("cart.")->group(function () {
     Route::get('/delete/{rowId}', [CartController::class,'delete'])->name('delete');
     Route::get('/destroy', [CartController::class,'destroy'])->name('destroy');
     Route::get('/update', [CartController::class,'update'])->name('update');
+});
+Route::get('checkout',[CheckoutController::class,'index'])->name("checkout");
+Route::post('checkout',[CheckoutController::class,'checkoutSubmit'])->name("checkout.submit");
+Route::prefix('/orders')->name("orders.")->group(function () {
+    Route::get('/view/{message?}', [OrderController::class,'view'])->name('view');
 });

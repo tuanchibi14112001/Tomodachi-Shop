@@ -41,7 +41,7 @@
         </div>
         <div class="cart-total">
             <p>cart total : <span>${{ $total }}</span></p>
-            <a href="" class="btn <?= $count > 1 ? '' : 'disabled' ?>">proceed to checkout</a>
+            <a href="{{ route('checkout') }}" class="btn <?= $count > 1 ? '' : 'disabled' ?>">proceed to checkout</a>
         </div>
 
         <div class="more-btn">
