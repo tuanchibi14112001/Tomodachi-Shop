@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         //dd($category);
-        $new_foods =  FoodItem::orderByDESC('created_at')->limit(10)->get();
+        $new_foods =  FoodItem::orderByDESC('created_at')->limit(6)->get();
         // dd($new_foods);
         $carts=Cart::content();
         $cart_total=Cart::total();

@@ -41,6 +41,7 @@ $(document).ready(function () {
         //console.log("check");
         e.preventDefault();
         $(".shopping-cart").fadeToggle("fast");
+        $(".shopping-cart").css("background-color");
     });
     $(".add-to-cart").click(function (e) {
         e.preventDefault();
