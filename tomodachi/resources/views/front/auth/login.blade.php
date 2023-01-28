@@ -8,6 +8,9 @@
             @if(Session::has('success'))
             <div class="alert alert-success" style="font-size:20px; color:blue;">{{ Session::get('success') }}</div>
             @endif
+            @if(Session::has('fail'))
+            <div class="alert alert-success" style="font-size:20px; color:red;">{{ Session::get('fail') }}</div>
+            @endif
             @csrf
             @include('front.alert')
             {{-- <h3>login now</h3> --}}

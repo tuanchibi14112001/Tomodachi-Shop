@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Session;
 use Hash;
 
 
@@ -25,7 +26,7 @@ class CustomAuthController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 return redirect()->action([HomeController::class, 'index'], ['cs_id' => $user->cs_id]);
             }else {
-                return redirect()->back();
+                return redirect()->back()->with('fail', 'Incorrect password or email');
             }
 
         } else {

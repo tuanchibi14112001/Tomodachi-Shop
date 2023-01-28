@@ -11,7 +11,7 @@
             {{-- <h3>register now</h3> --}}
             <div class="form-group">
                 <input type="text" required maxlength="20" name="name" placeholder="enter your name" class="box"
-                    oninput="this.value = this.value.replace(/\s/g, '')">
+                    oninput="this.value">
                     
             </div>
             <div class="form-group">

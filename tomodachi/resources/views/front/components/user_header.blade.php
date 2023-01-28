@@ -67,18 +67,27 @@ $conn = new PDO($db_name, $user_name, $user_password);
                $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
                 <p class="name"><?= $fetch_profile['name'] ?></p>
-                <div class="flex">
-                    <a href="{{ url('profile/?cs_id='.$customer_id) }}" class="btn">profile</a>
+                <div class="flex" style="justify-content: center;">
+                    <a href="{{ url('profile/?cs_id=' . $customer_id) }}" class="btn">profile</a>
+                    
+                </div>
+                <div class="flex" style="justify-content: center;">
+                    <a href="{{ url('profile/update_password/?cs_id=' . $customer_id) }}" class="btn">change
+                        password</a>
+                </div>
+
+                <div class="flex" style="justify-content: center;">
                     <a href="login" onclick="return confirm('logout from this website?');"
                         class="delete-btn">logout</a>
                 </div>
-                
                 <?php
             }else{
          ?>
                 <p class="name">please login first!</p>
-                <a href="register" class="btn">register</a>
-                <a href="login" class="btn">login</a>
+                <div class="flex">
+                    <a href="register" class="btn">register</a>
+                    <a href="login" class="btn">login</a>
+                </div>
 
                 <?php
             }

@@ -46,7 +46,14 @@ Route::post('/login_store', [CustomAuthController::class, 'loginStore'])->name('
 Route::get('/register', [CustomAuthController::class, 'register']);
 Route::post('/register_user', [CustomAuthController::class, 'registerUser'])->name('register_user');
 
-Route::get('/profile', [UserController::class, 'profile']);
+
+Route::prefix('profile')->group(function () {
+    Route::get('', [UserController::class,'profile']);
+    Route::get('/update_profile', [UserController::class,'updateProfile'])->name('update_profile');
+    Route::post('/update_profile_post/{cs_id}', [UserController::class,'updateProfilePost'])->name('update_profile_post');
+    Route::get('/update_password', [UserController::class,'updatePassword'])->name('update_password');;
+    Route::post('/update_password_post/{cs_id}', [UserController::class,'updatePasswordPost'])->name('update_password_post');
+});
 
 
 // đăng kí thành công chưa hiển thị thông báo , chưa làm được phần đăng nhập, đăng nhập xong không hiển thị thông tin người dùng 
