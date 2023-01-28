@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 20, 2023 lúc 03:09 AM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 7.4.25
+-- Host: 127.0.0.1
+-- Generation Time: Jan 28, 2023 at 10:10 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `order_food_system`
+-- Database: `food_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_menu`
+-- Table structure for table `admin_menu`
 --
 
 CREATE TABLE `admin_menu` (
@@ -42,7 +42,7 @@ CREATE TABLE `admin_menu` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_operation_log`
+-- Table structure for table `admin_operation_log`
 --
 
 CREATE TABLE `admin_operation_log` (
@@ -59,7 +59,7 @@ CREATE TABLE `admin_operation_log` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_permissions`
+-- Table structure for table `admin_permissions`
 --
 
 CREATE TABLE `admin_permissions` (
@@ -75,7 +75,7 @@ CREATE TABLE `admin_permissions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_roles`
+-- Table structure for table `admin_roles`
 --
 
 CREATE TABLE `admin_roles` (
@@ -89,7 +89,7 @@ CREATE TABLE `admin_roles` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_role_menu`
+-- Table structure for table `admin_role_menu`
 --
 
 CREATE TABLE `admin_role_menu` (
@@ -102,7 +102,7 @@ CREATE TABLE `admin_role_menu` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_role_permissions`
+-- Table structure for table `admin_role_permissions`
 --
 
 CREATE TABLE `admin_role_permissions` (
@@ -115,7 +115,7 @@ CREATE TABLE `admin_role_permissions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_role_users`
+-- Table structure for table `admin_role_users`
 --
 
 CREATE TABLE `admin_role_users` (
@@ -128,7 +128,7 @@ CREATE TABLE `admin_role_users` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_users`
+-- Table structure for table `admin_users`
 --
 
 CREATE TABLE `admin_users` (
@@ -145,7 +145,7 @@ CREATE TABLE `admin_users` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin_user_permissions`
+-- Table structure for table `admin_user_permissions`
 --
 
 CREATE TABLE `admin_user_permissions` (
@@ -158,7 +158,7 @@ CREATE TABLE `admin_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -168,7 +168,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `image`) VALUES
@@ -180,24 +180,31 @@ INSERT INTO `category` (`id`, `name`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `dob` date NOT NULL,
+  `dob` date DEFAULT NULL,
   `phone_num` varchar(50) NOT NULL,
-  `mail` varchar(100) NOT NULL,
-  `url` text NOT NULL,
-  `point` int(11) NOT NULL,
-  `address` text NOT NULL
+  `url` text DEFAULT NULL,
+  `point` int(11) NOT NULL DEFAULT 0,
+  `address` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `name`, `dob`, `phone_num`, `url`, `point`, `address`) VALUES
+(19, 'Xuan Nang', '2001-07-30', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an'),
+(20, 'Tran Xuan Nang', '2017-01-23', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -213,7 +220,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `fooditem`
+-- Table structure for table `fooditem`
 --
 
 CREATE TABLE `fooditem` (
@@ -229,7 +236,7 @@ CREATE TABLE `fooditem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `fooditem`
+-- Dumping data for table `fooditem`
 --
 
 INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`, `created_at`, `updated_at`) VALUES
@@ -239,7 +246,7 @@ INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `pri
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `foodorder`
+-- Table structure for table `foodorder`
 --
 
 CREATE TABLE `foodorder` (
@@ -254,7 +261,7 @@ CREATE TABLE `foodorder` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -264,7 +271,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -277,7 +284,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orderdetail`
+-- Table structure for table `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
@@ -289,7 +296,7 @@ CREATE TABLE `orderdetail` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -301,7 +308,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -319,21 +326,31 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `cs_id` int(11) NOT NULL,
-  `username` varchar(500) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `password` varchar(500) NOT NULL,
-  `role` int(11) NOT NULL
+  `role` int(11) NOT NULL DEFAULT 1,
+  `created_at` datetime DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `cs_id`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(19, 19, 'nang3007@gmail.com', '$2y$10$lyJLaWCz6tX6A1KfnHslfud/hffy1u0fRmPip4GQEWnNyvllzcjrm', 1, '2023-01-28 08:21:56', '2023-01-28 01:21:56'),
+(20, 20, 'nang.tx194633@sis.hust.edu.vn', '$2y$10$YdZhrq.YxAjlktckHr9a1OGG.febmuu3ZvXvCITrJLdlmndFLiJWC', 1, '2023-01-28 09:12:49', '2023-01-28 02:12:49');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -348,24 +365,24 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin_menu`
+-- Indexes for table `admin_menu`
 --
 ALTER TABLE `admin_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `admin_operation_log`
+-- Indexes for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_operation_log_user_id_index` (`user_id`);
 
 --
--- Chỉ mục cho bảng `admin_permissions`
+-- Indexes for table `admin_permissions`
 --
 ALTER TABLE `admin_permissions`
   ADD PRIMARY KEY (`id`),
@@ -373,7 +390,7 @@ ALTER TABLE `admin_permissions`
   ADD UNIQUE KEY `admin_permissions_slug_unique` (`slug`);
 
 --
--- Chỉ mục cho bảng `admin_roles`
+-- Indexes for table `admin_roles`
 --
 ALTER TABLE `admin_roles`
   ADD PRIMARY KEY (`id`),
@@ -381,90 +398,90 @@ ALTER TABLE `admin_roles`
   ADD UNIQUE KEY `admin_roles_slug_unique` (`slug`);
 
 --
--- Chỉ mục cho bảng `admin_role_menu`
+-- Indexes for table `admin_role_menu`
 --
 ALTER TABLE `admin_role_menu`
   ADD KEY `admin_role_menu_role_id_menu_id_index` (`role_id`,`menu_id`);
 
 --
--- Chỉ mục cho bảng `admin_role_permissions`
+-- Indexes for table `admin_role_permissions`
 --
 ALTER TABLE `admin_role_permissions`
   ADD KEY `admin_role_permissions_role_id_permission_id_index` (`role_id`,`permission_id`);
 
 --
--- Chỉ mục cho bảng `admin_role_users`
+-- Indexes for table `admin_role_users`
 --
 ALTER TABLE `admin_role_users`
   ADD KEY `admin_role_users_role_id_user_id_index` (`role_id`,`user_id`);
 
 --
--- Chỉ mục cho bảng `admin_users`
+-- Indexes for table `admin_users`
 --
 ALTER TABLE `admin_users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `admin_users_username_unique` (`username`);
 
 --
--- Chỉ mục cho bảng `admin_user_permissions`
+-- Indexes for table `admin_user_permissions`
 --
 ALTER TABLE `admin_user_permissions`
   ADD KEY `admin_user_permissions_user_id_permission_id_index` (`user_id`,`permission_id`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `customer`
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Chỉ mục cho bảng `fooditem`
+-- Indexes for table `fooditem`
 --
 ALTER TABLE `fooditem`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cate_fk` (`cate_id`);
 
 --
--- Chỉ mục cho bảng `foodorder`
+-- Indexes for table `foodorder`
 --
 ALTER TABLE `foodorder`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cs_id_fk` (`cs_id`);
 
 --
--- Chỉ mục cho bảng `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `orderdetail`
+-- Indexes for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD PRIMARY KEY (`order_id`,`food_id`),
   ADD KEY `food_id` (`food_id`);
 
 --
--- Chỉ mục cho bảng `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Chỉ mục cho bảng `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -472,132 +489,133 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email_unique` (`email`),
   ADD KEY `cs_id` (`cs_id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin_menu`
+-- AUTO_INCREMENT for table `admin_menu`
 --
 ALTER TABLE `admin_menu`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `admin_operation_log`
+-- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `admin_permissions`
+-- AUTO_INCREMENT for table `admin_permissions`
 --
 ALTER TABLE `admin_permissions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `admin_roles`
+-- AUTO_INCREMENT for table `admin_roles`
 --
 ALTER TABLE `admin_roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `admin_users`
+-- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `customer`
+-- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT cho bảng `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `fooditem`
+-- AUTO_INCREMENT for table `fooditem`
 --
 ALTER TABLE `fooditem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `foodorder`
+-- AUTO_INCREMENT for table `foodorder`
 --
 ALTER TABLE `foodorder`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `fooditem`
+-- Constraints for table `fooditem`
 --
 ALTER TABLE `fooditem`
   ADD CONSTRAINT `cate_fk` FOREIGN KEY (`cate_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `foodorder`
+-- Constraints for table `foodorder`
 --
 ALTER TABLE `foodorder`
   ADD CONSTRAINT `cs_id_fk` FOREIGN KEY (`cs_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `orderdetail`
+-- Constraints for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `fooditem` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `foodorder` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`cs_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
