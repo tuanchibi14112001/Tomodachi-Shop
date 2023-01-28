@@ -16,14 +16,14 @@ class ShopController extends Controller
         ]);
     }
 
-    public function menu($id){
+    public function menu(){
         $categories = Category::all();
         $active = 0;
-        $foods = FoodItem::all();
         return view('front.shop.menu',[
             'categories' => $categories,
             'active' => $active,
-            'foods' => $foods,
         ]);
     }
+
+    
 }

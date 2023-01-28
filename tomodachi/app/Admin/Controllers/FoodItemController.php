@@ -77,6 +77,7 @@ class FoodItemController extends AdminController
         $form->textarea('description', __('Description'));
         $form->decimal('price', __('Price'));
         $form->image('url', __('Image'));
+        $form->datetime('updated_at',__('Updated At'));
 
         return $form;
     }

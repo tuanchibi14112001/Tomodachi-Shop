@@ -4,8 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
+<<<<<<< HEAD
 use App\Http\Controllers\Front\CustomAuthController;
 use App\Http\Controllers\Front\UserController;
+=======
+use App\Http\Controllers\Front\CheckoutController;
+use App\Http\Controllers\Front\OrderController;
+
+>>>>>>> 0e40446264ce2702b0773cc5a125697a143b51c5
 
 /*
 /*
@@ -27,7 +33,8 @@ Route::get('/shop/about', function () {
 
 Route::get('/shop/quick_view/food_id={id}', [ShopController::class, 'quick_view']);
 
-Route::get('/shop/menu/{id}', [ShopController::class, 'menu']);
+Route::get('/shop/menu', [ShopController::class, 'menu']);
+
 // Route::get('/test', function () {
 //     return FoodItem::find(1)->category['name'];
 // });
@@ -37,6 +44,7 @@ Route::get('/shop/menu/{id}', [ShopController::class, 'menu']);
 
 Route::prefix('cart')->name("cart.")->group(function () {
     Route::get('/', [CartController::class,'index'])->name('index');
+<<<<<<< HEAD
     Route::post('/add', [CartController::class,'add'])->name('add');
 });
 
@@ -58,3 +66,15 @@ Route::prefix('profile')->group(function () {
 
 // đăng kí thành công chưa hiển thị thông báo , chưa làm được phần đăng nhập, đăng nhập xong không hiển thị thông tin người dùng 
 // chưa thêm sửa xóa thông tin người dùng.
+=======
+    Route::get('/add', [CartController::class,'add'])->name('add');
+    Route::get('/delete/{rowId}', [CartController::class,'delete'])->name('delete');
+    Route::get('/destroy', [CartController::class,'destroy'])->name('destroy');
+    Route::get('/update', [CartController::class,'update'])->name('update');
+});
+Route::get('checkout',[CheckoutController::class,'index'])->name("checkout");
+Route::post('checkout',[CheckoutController::class,'checkoutSubmit'])->name("checkout.submit");
+Route::prefix('/orders')->name("orders.")->group(function () {
+    Route::get('/view/{message?}', [OrderController::class,'view'])->name('view');
+});
+>>>>>>> 0e40446264ce2702b0773cc5a125697a143b51c5

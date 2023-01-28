@@ -1,28 +1,19 @@
 @extends('front.master')
 @section('title', 'MENU')
 @section('body')
-    <?php
-    $db_name = 'mysql:host=localhost;dbname=food_db';
-    $user_name = 'root';
-    $user_password = '';
-    $conn = new PDO($db_name, $user_name, $user_password);
-    ?>
-    <style>
-    </style>
 
-    <div class="header">
+    <div class="header2">
         <nav class="nav">
             <div class="container">
-                <ul>
+                <ul id="mainNav">
                     @foreach ($categories as $category)
-                        <li class="{{ request()->segment(3) == $category->id ? 'active' : '' }}"><a
-                                href="/shop/menu/{{ $category->id }}#{{ $category->id }}">{{ $category->name }}</a></li>
+                        <li class="nav-link" id="nav{{ $category->id }}"><a
+                                href="/shop/menu#{{ $category->id }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
         </nav>
     </div>
-
     <div class="heading">
         <h3>our menu</h3>
         <p><a href={{ url('/') }}>home</a> <span> / menu</span></p>
@@ -30,40 +21,66 @@
 
     <!-- menu section starts  -->
     @foreach ($categories as $category)
-        <section class=" section products" id="{{ $category->id }}">
-            <h1 style="margin-bottom: 30px; font-size: large;text-transform: uppercase;">{{ $category->name }}</h1>
-            <div class="box-container">
-            @foreach ($foods as $food)
-                @if ($food->cate_id == $category->id)
-                    
-                @include('front.components.food_items',['food_item'=>$food])
+        @if ($category->FoodItems()->count() > 0)
+            <section class=" section products" id="{{ $category->id }}">
+                <h1 style="margin-bottom: 30px; font-size: large;text-transform: uppercase;">{{ $category->name }}</h1>
+                <div class="box-container">
+                    @foreach ($category->FoodItems as $food)
+                        @include('front.components.food_items', ['food_item' => $food])
+                    @endforeach
+                </div>
 
-                    
-                @endif
-            @endforeach
-         </div>           
-
-        </section>
+            </section>
+        @endif
     @endforeach
 
     <script>
-        const sections = document.querySelectorAll(".section");
-        const navLi = document.querySelectorAll(".nav .container ul li");
-        window.addEventListener("scroll", () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - sectionHeight / 3) {
-                    current = section.getAttribute("id");
-                    console.log(current);
+        $(document).ready(function() {
+            var
+                topMenu = $("#mainNav"),
+                topMenuHeight = topMenu.outerHeight() + 1,
+                // All list items
+                menuItems = topMenu.find("li"),
+                // Anchors corresponding to menu items
+                scrollItems = menuItems.map(function() {
+                    var id = $(this).attr('id');
+                    id = id.substring(3);
+                    var item = $('#' + id);
+                    if (item.length) {
+                        return item;
+                    }
+                });
+            //console.log(scrollItems);
+
+            $(window).scroll(function() {
+                // Get container scroll position
+                var fromTop = $(this).scrollTop() + topMenuHeight;
+
+                // Get id of current scroll item
+                var cur = scrollItems.map(function() {
+                    if ($(this).offset().top < fromTop + 100)
+                        return this;
+                });
+                // Get the id of the current element
+                cur = cur[cur.length - 1];
+                var id = cur && cur.length ? cur[0].id : "";
+                // console.log(id);
+                if (id != "") {
+                    $('.active').removeClass('active');
+                    $('#nav' + id).addClass('active');
                 }
+                
             });
-            navLi.forEach((li) => {
-                li.classList.remove("active");
-                if (li.classList.contains(current)) {
-                    li.classList.add("active");
-                }
+
+
+            let segment = window.location.hash;
+            segment = segment.substring(1);
+            //console.log(segment);
+            ($('#nav' + segment)).addClass('active');
+            $('.nav-link a').click(function() {
+                //console.log(segment);
+                $('.active').removeClass('active');
+                $(this).parent().addClass('active');
             });
         });
     </script>

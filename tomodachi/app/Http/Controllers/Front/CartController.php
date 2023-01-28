@@ -28,6 +28,30 @@ class CartController extends Controller
                 ]
         ]);
         // Cart::destroy();
+        $view= view('front.components.header_cart', [
+            'carts' => Cart::content(),
+            'cart_total' => Cart::total()
+        ])->render();
+        return response()->json(['view' =>$view, 'count'=> Cart::count()]);
+        
+    }
+    public function delete($rowId){
+        Cart::remove($rowId);
         return back();
+    }
+    public function destroy(){
+        Cart::destroy();
+        return back();
+    }
+    public function update(Request $req){
+        if($req->ajax()){
+            Cart::update($req->rowId,$req->qty);
+            $cart=Cart::get($req->rowId);
+            return response()->json([
+                'total_price' => Cart::total(),
+                'sub_total' =>$cart->subtotal,
+                'count' => Cart::count()
+            ]);
+        }
     }
 }
