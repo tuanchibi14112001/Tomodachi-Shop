@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
+if (isset($_SESSION['customer_id'])) {
+    $customer_id = $_SESSION['customer_id'];
 } else {
-    $user_id = '';
+    $customer_id = '';
 }
 $db_name = 'mysql:host=localhost;dbname=food_db';
 $user_name = 'root';
@@ -60,21 +60,19 @@ $conn = new PDO($db_name, $user_name, $user_password);
 
             <div class="profile">
                 <?php
-            $select_profile = $conn->prepare("SELECT * FROM `users` WHERE id = ?");
-            $select_profile->execute([$user_id]);
+                $customer_id = request()->query('cs_id');
+            $select_profile = $conn->prepare("SELECT * FROM `customer` WHERE id = ?");
+            $select_profile->execute([$customer_id]);
             if($select_profile->rowCount() > 0){
                $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
                 <p class="name"><?= $fetch_profile['name'] ?></p>
                 <div class="flex">
-                    <a href="profile.php" class="btn">profile</a>
-                    <a href="components/user_logout.php" onclick="return confirm('logout from this website?');"
+                    <a href="{{ url('profile/?cs_id='.$customer_id) }}" class="btn">profile</a>
+                    <a href="login" onclick="return confirm('logout from this website?');"
                         class="delete-btn">logout</a>
                 </div>
-                <p class="account">
-                    <a href="login.php">login</a> or
-                    <a href="register.php">register</a>
-                </p>
+                
                 <?php
             }else{
          ?>
