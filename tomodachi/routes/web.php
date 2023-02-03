@@ -41,7 +41,12 @@ Route::get('/shop/menu', [ShopController::class, 'menu']);
 
 Route::prefix('cart')->name("cart.")->group(function () {
     Route::get('/', [CartController::class,'index'])->name('index');
-    Route::post('/add', [CartController::class,'add'])->name('add');
+    // Route::post('/add', [CartController::class,'add'])->name('add');
+    Route::get('/add', [CartController::class,'add'])->name('add');
+    Route::get('/delete/{rowId}', [CartController::class,'delete'])->name('delete');
+    Route::get('/destroy', [CartController::class,'destroy'])->name('destroy');
+    Route::get('/update', [CartController::class,'update'])->name('update');
+
 });
 
 Route::get('/login', [CustomAuthController::class, 'login']);
@@ -60,11 +65,7 @@ Route::prefix('profile')->group(function () {
 });
 
 
-    Route::get('/add', [CartController::class,'add'])->name('add');
-    Route::get('/delete/{rowId}', [CartController::class,'delete'])->name('delete');
-    Route::get('/destroy', [CartController::class,'destroy'])->name('destroy');
-    Route::get('/update', [CartController::class,'update'])->name('update');
-
+    
 Route::get('checkout',[CheckoutController::class,'index'])->name("checkout");
 Route::post('checkout',[CheckoutController::class,'checkoutSubmit'])->name("checkout.submit");
 Route::prefix('/orders')->name("orders.")->group(function () {
