@@ -2,35 +2,33 @@
 
     <section class="grid">
 
-        <div class="box">
+        <div class="box box1">
             <img src="front/images/email-icon.png" alt="">
             <h3>our email</h3>
-            <a href="mailto:shaikhanas@gmail.com">shaikhanas@gmail.com</a>
-            <a href="mailto:anasbhai@gmail.com">anasbhai@gmail.com</a>
+            <a href="mailto:nang.tx194633@sis.hust.edu.vn">nang.tx194633@sis.hust.edu.vn</a>
         </div>
 
-        <div class="box">
+        <div class="box box1">
             <img src="front/images/clock-icon.png" alt="">
             <h3>opening hours</h3>
-            <p>00:07am to 00:10pm</p>
+            <p>07:00am to 10:00pm</p>
         </div>
 
-        <div class="box">
+        <div class="box box1">
             <img src="front/images/map-icon.png" alt="">
             <h3>our address</h3>
-            <a href="#">mumbai, india - 400104</a>
+            <a href="#">1 Dai Co Viet, Hai Ba Trung, Ha Noi, Viet Nam</a>
         </div>
 
-        <div class="box">
+        <div class="box box1">
             <img src="front/images/phone-icon.png" alt="">
             <h3>our number</h3>
-            <a href="tel:1234567890">123-456-7890</a>
-            <a href="tel:1112223333">111-222-3333</a>
+            <a href="tel:1234567890">099999999</a>
         </div>
 
     </section>
 
-    <div class="credit">&copy; copyright @ <?= date('Y') ?> by <span>mr. web designer</span> | all rights reserved!
+    <div class="credit">&copy; copyright @ <?= date('Y') ?> by <span>tomodachi-shop</span> | all rights reserved!
     </div>
 
 </footer>

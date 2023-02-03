@@ -8,6 +8,8 @@ use App\Http\Controllers\Front\CustomAuthController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\OrderController;
+use App\Http\Controllers\Front\SearchController;
+use App\Http\Middleware\CheckLogin;
 
 
 /*
@@ -28,7 +30,7 @@ Route::get('/shop/about', function () {
     return view('front.shop.about');
 });
 
-Route::get('/shop/quick_view/food_id={id}', [ShopController::class, 'quick_view']);
+Route::get('/shop/quick_view/food_id={id}', [ShopController::class, 'quick_view'])->name('quick_view');
 
 Route::get('/shop/menu', [ShopController::class, 'menu']);
 
@@ -49,7 +51,7 @@ Route::prefix('cart')->name("cart.")->group(function () {
 
 });
 
-Route::get('/login', [CustomAuthController::class, 'login']);
+Route::get('/login', [CustomAuthController::class, 'login'])->name('login');
 Route::post('/login_store', [CustomAuthController::class, 'loginStore'])->name('login_store');
 
 Route::get('/register', [CustomAuthController::class, 'register']);
@@ -66,8 +68,12 @@ Route::prefix('profile')->group(function () {
 
 
     
-Route::get('checkout',[CheckoutController::class,'index'])->name("checkout");
-Route::post('checkout',[CheckoutController::class,'checkoutSubmit'])->name("checkout.submit");
-Route::prefix('/orders')->name("orders.")->group(function () {
+Route::get('checkout',[CheckoutController::class,'index'])->name("checkout")->middleware(CheckLogin::class);
+Route::post('checkout',[CheckoutController::class,'checkoutSubmit'])->name("checkout.submit")->middleware(CheckLogin::class);
+Route::prefix('/orders')->name("orders.")->middleware(CheckLogin::class)->group(function () {
     Route::get('/view/{message?}', [OrderController::class,'view'])->name('view');
 });
+
+
+Route::get('search',[SearchController::class,'index'])->name("search");
+Route::post('search',[SearchController::class,'searchPost'])->name("search.submit");

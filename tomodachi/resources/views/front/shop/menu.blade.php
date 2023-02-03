@@ -8,7 +8,7 @@
                 <ul id="mainNav">
                     @foreach ($categories as $category)
                         <li class="nav-link" id="nav{{ $category->id }}"><a
-                                href="/shop/menu#{{ $category->id }}">{{ $category->name }}</a></li>
+                                href="/shop/menu#{{ $category->id }}">{{ strtolower($category->name) }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -69,7 +69,7 @@
                     $('.active').removeClass('active');
                     $('#nav' + id).addClass('active');
                 }
-                
+
             });
 
 

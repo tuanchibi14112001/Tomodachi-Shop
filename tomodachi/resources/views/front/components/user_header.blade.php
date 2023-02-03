@@ -1,11 +1,4 @@
 <?php
-session_start();
-
-if (isset($_SESSION['customer_id'])) {
-    $customer_id = $_SESSION['customer_id'];
-} else {
-    $customer_id = '';
-}
 $db_name = 'mysql:host=localhost;dbname=food_db';
 $user_name = 'root';
 $user_password = '';
@@ -44,10 +37,9 @@ $conn = new PDO($db_name, $user_name, $user_password);
                 <a href="shop/about">about</a>
                 <a href="/shop/menu#1">menu</a>
                 <a href="{{ route('orders.view') }}">orders</a>
-                <a href="contact.php">contact</a>
             </nav>
             <div class="icons">
-                <a href="search.php"><i class="fas fa-search icon"></i></a>
+                <a href="{{ route('search') }}"><i class="fas fa-search icon"></i></a>
                 <a href="#" id="cart"
                     class="show-cart icon @if (Route::current()->getName() == 'cart.index') disabled @endif"><i
                         class="fas fa-shopping-cart"></i><span>({{ Cart::count() }})</span></a>
@@ -64,39 +56,41 @@ $conn = new PDO($db_name, $user_name, $user_password);
             </div>
 
             <div class="profile">
-                <?php
-                $customer_id = request()->query('cs_id');
-            $select_profile = $conn->prepare("SELECT * FROM `customer` WHERE id = ?");
-            $select_profile->execute([$customer_id]);
-            if($select_profile->rowCount() > 0){
-               $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
-         ?>
-                <p class="name"><?= $fetch_profile['name'] ?></p>
-                <div class="flex" style="justify-content: center;">
-                    <a href="{{ url('profile/?cs_id=' . $customer_id) }}" class="btn">profile</a>
-                    
-                </div>
-                <div class="flex" style="justify-content: center;">
-                    <a href="{{ url('profile/update_password/?cs_id=' . $customer_id) }}" class="btn">change
-                        password</a>
-                </div>
 
-                <div class="flex" style="justify-content: center;">
-                    <a href="login" onclick="return confirm('logout from this website?');"
-                        class="delete-btn">logout</a>
-                </div>
-                <?php
-            }else{
-         ?>
-                <p class="name">please login first!</p>
-                <div class="flex">
-                    <a href="register" class="btn">register</a>
-                    <a href="login" class="btn">login</a>
-                </div>
 
-                <?php
-            }
-         ?>
+                @php
+                    $customer_id = Session::get('customer_id');
+                    $select_profile = $conn->prepare('SELECT * FROM `customer` WHERE id = ?');
+                    $select_profile->execute([$customer_id]);
+                    if ($select_profile->rowCount() > 0) {
+                        $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+                    }
+                @endphp
+
+                @if ($customer_id)
+                    <p class="name">{{ $fetch_profile['name'] }}</p>
+                    <div class="flex" style="justify-content: center;">
+                        <a href="{{ url('profile/?cs_id=' . $customer_id) }}" class="btn">profile</a>
+
+                    </div>
+                    <div class="flex" style="justify-content: center;">
+                        <a href="{{ url('profile/update_password/?cs_id=' . $customer_id) }}" class="btn">change
+                            password</a>
+                    </div>
+
+                    <div class="flex" style="justify-content: center;">
+                        <a href="login" onclick="return confirm('logout from this website?');"
+                            class="delete-btn">logout</a>
+                    </div>
+                @else
+                    <p class="name">please login first!</p>
+                    <div class="flex">
+                        <a href="register" class="btn">register</a>
+                        <a href="login" class="btn">login</a>
+                    </div>
+                @endif
+
+
             </div>
 
         </section>

@@ -26,7 +26,7 @@
                     <div class="box">
                         <p>placed on : <span>{{ $order->created_at }}</span></p>
                         <p>name : <span>{{ $order->customer->name }}</span></p>
-                        <p>email : <span>{{ $order->customer->mail }}</span></p>
+                        <p>email : <span>{{ $order->customer->user->email }}</span></p>
                         <p>number : <span>{{ $order->customer->phone_num }}</span></p>
                         <p>address : <span>{{ $order->customer->address }}</span></p>
                         {{-- <p>payment method : <span><?= $fetch_orders['method'] ?></span></p> --}}

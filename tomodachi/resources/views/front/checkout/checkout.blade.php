@@ -30,12 +30,6 @@
                 <a href="{{ route('cart.index') }}" class="btn">veiw cart</a>
             </div>
 
-            {{-- <input type="hidden" name="total_products" value="<?= $total_products ?>">
-            <input type="hidden" name="total_price" value="<?= $grand_total ?>" value="">
-            <input type="hidden" name="name" value="<?= $fetch_profile['name'] ?>">
-            <input type="hidden" name="number" value="<?= $fetch_profile['number'] ?>">
-            <input type="hidden" name="email" value="<?= $fetch_profile['email'] ?>">
-            <input type="hidden" name="address" value="<?= $fetch_profile['address'] ?>"> --}}
             @if ($total > 0)
                 <div class="user-info">
                     <h3>Note</h3>
@@ -43,17 +37,19 @@
                         <textarea name="note" form="checkout_form" class="order-note" placeholder="Note for cheef"></textarea>
                     </div>
                     <h3>your info</h3>
-                    <p><i class="fas fa-user"></i><input type="text" name="name"value="{{ $customer->name }}" /></p>
-                    <p><i class="fas fa-phone"></i><input type="text" name="phone"
+                    <p><i class="fas fa-user"></i><input readonly type="text"
+                            name="name"value="{{ $customer->name }}" /></p>
+                    <p><i class="fas fa-phone"></i><input readonly type="text" name="phone"
                             value=" {{ $customer->phone_num }}" />
                     </p>
-                    <p><i class="fas fa-envelope"></i><input type="text" name="mail" value="{{ $customer->mail }}" />
+                    <p><i class="fas fa-envelope"></i><input readonly type="text" name="mail"
+                            value="{{ $customer->user->email }}" />
                     </p>
-                    {{-- <a href="" class="btn">update info</a> --}}
                     <h3>delivery address</h3>
-                    <p><i class="fas fa-map-marker-alt"></i><input type="text" name="address"
-                            value="{{ $customer->address }}" /></p>
-                    {{-- <a href="" class="btn">update address</a> --}}
+                    <p><i class="fas fa-map-marker-alt"></i><input readonly value="{{ $customer->address }}" type="text"
+                            name="address" /></p>
+                    <a href="{{ url('profile/update_profile?cs_id=' . $customer->id) }}" class="btn">update info</a>
+
                     <p><i class="fas fa-dollar-sign"></i><select name="method" class="box payment_select" required>
                             <option value="" disabled selected>select payment method --</option>
                             <option value="cash on delivery">cash on delivery</option>
@@ -62,10 +58,20 @@
                             <option value="paypal">paypal</option>
                         </select>
                     </p>
+                    @php
+                        $disable = 0;
+                        if ($customer->address == null || $customer->phone_num == null || $customer->name == null) {
+                            $disable = 1;
+                        }
+                    @endphp
 
                 </div>
-                <input type="submit" value="place order" class="btn"
-                    style="width:100%; background:var(--red); color:var(--white);" name="submit">
+                @if (!$disable)
+                    <input type="submit" value="place order" class="btn"
+                        style="width:100%; background:var(--red); color:var(--white);" name="submit">
+                @else
+                    <p class="empty">Please update info before checkout</p>
+                @endif
             @endif
         </form>
 

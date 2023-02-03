@@ -174,15 +174,17 @@ section {
    background-color: var(--white);
    border-bottom: var(--border);
 }
+
 .header2 {
    position: sticky;
    top: 65px;
    left: 0;
    right: 0;
-   z-index: 1000;
+   z-index: 50;
    background-color: var(--white);
    border-bottom: var(--border);
 }
+
 .header .flex {
    display: flex;
    align-items: center;
@@ -318,6 +320,10 @@ section {
    border: var(--border);
    padding: 2rem;
    text-align: center;
+}
+
+.box1 {
+   height: 240px !important;
 }
 
 .category .box-container .box img {

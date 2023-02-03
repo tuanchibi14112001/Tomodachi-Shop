@@ -7,13 +7,18 @@ use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
 use Hash;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 
 use Illuminate\Http\Request;
 
 class CustomAuthController extends Controller
 {
-    public function login(){
+    public function login(Request $request){
+        if(Session::exists('customer_id')){ 
+            Cart::destroy();
+            Session::forget('customer_id');
+        }
         return view('front.auth.login');
     }
     public function loginStore(Request $request){
@@ -24,7 +29,9 @@ class CustomAuthController extends Controller
         $user = User::where('email', '=', $request->email)->first();
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
-                return redirect()->action([HomeController::class, 'index'], ['cs_id' => $user->cs_id]);
+                Session::put('customer_id', $user->cs_id);
+                // $request->session()->put('customer_id', $user->cs_id);
+                return redirect()->action([HomeController::class, 'index'], ['cs_id' => $user->cs_id]);             
             }else {
                 return redirect()->back()->with('fail', 'Incorrect password or email');
             }

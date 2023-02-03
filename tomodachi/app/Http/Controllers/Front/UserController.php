@@ -31,7 +31,7 @@ class UserController extends Controller
         $customer_id = $request['cs_id'];
         $customer = Customer::where('id', '=', $customer_id)->first();
         if ($customer) {
-            if($request->name){
+            if($request->name){     
                 $customer->name = $request->name;
             }
             if($request->number){

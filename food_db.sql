@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2023 at 10:10 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Feb 03, 2023 at 06:55 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,10 +39,8 @@ CREATE TABLE `admin_menu` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Đang đổ dữ liệu cho bảng `admin_menu`
+-- Dumping data for table `admin_menu`
 --
 
 INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `permission`, `created_at`, `updated_at`) VALUES
@@ -57,7 +55,6 @@ INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `p
 (9, 0, 0, 'FoodItem', 'fa-ship', '/food-items', '*', '2023-01-18 09:31:49', '2023-01-18 09:41:15');
 
 -- --------------------------------------------------------
-
 
 --
 -- Table structure for table `admin_operation_log`
@@ -74,10 +71,8 @@ CREATE TABLE `admin_operation_log` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Đang đổ dữ liệu cho bảng `admin_operation_log`
+-- Dumping data for table `admin_operation_log`
 --
 
 INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
@@ -382,7 +377,6 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 
 -- --------------------------------------------------------
 
-
 --
 -- Table structure for table `admin_permissions`
 --
@@ -397,10 +391,8 @@ CREATE TABLE `admin_permissions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Đang đổ dữ liệu cho bảng `admin_permissions`
+-- Dumping data for table `admin_permissions`
 --
 
 INSERT INTO `admin_permissions` (`id`, `name`, `slug`, `http_method`, `http_path`, `created_at`, `updated_at`) VALUES
@@ -424,13 +416,14 @@ CREATE TABLE `admin_roles` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
+--
+-- Dumping data for table `admin_roles`
+--
 
 INSERT INTO `admin_roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Administrator', 'administrator', '2023-01-17 02:06:44', '2023-01-17 02:06:44');
 
 -- --------------------------------------------------------
-
 
 --
 -- Table structure for table `admin_role_menu`
@@ -443,10 +436,8 @@ CREATE TABLE `admin_role_menu` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Đang đổ dữ liệu cho bảng `admin_role_menu`
+-- Dumping data for table `admin_role_menu`
 --
 
 INSERT INTO `admin_role_menu` (`role_id`, `menu_id`, `created_at`, `updated_at`) VALUES
@@ -466,15 +457,14 @@ CREATE TABLE `admin_role_permissions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
 --
--- Đang đổ dữ liệu cho bảng `admin_role_permissions`
+-- Dumping data for table `admin_role_permissions`
 --
 
 INSERT INTO `admin_role_permissions` (`role_id`, `permission_id`, `created_at`, `updated_at`) VALUES
 (1, 1, NULL, NULL);
 
--- ----------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admin_role_users`
@@ -487,18 +477,14 @@ CREATE TABLE `admin_role_users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Đang đổ dữ liệu cho bảng `admin_role_users`
+-- Dumping data for table `admin_role_users`
 --
 
 INSERT INTO `admin_role_users` (`role_id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
-
-
 
 --
 -- Table structure for table `admin_users`
@@ -515,6 +501,13 @@ CREATE TABLE `admin_users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `admin_users`
+--
+
+INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '$2y$10$UEBeVI/7153I/ndmzYYuj.6/0FVhsYVO0Qs9S1bRCgKzkUMCCD6jy', 'Administrator', NULL, 'uyh11UzRcg2Ae7NTMFTG1HifqoAOr8ozii1E1KbDJ3iN9foCUwe1qcnnDU2O', '2023-01-17 02:06:44', '2023-01-17 02:06:44');
+
 -- --------------------------------------------------------
 
 --
@@ -529,17 +522,6 @@ CREATE TABLE `admin_user_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
-
---
--- Đang đổ dữ liệu cho bảng `admin_users`
---
-
-INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$UEBeVI/7153I/ndmzYYuj.6/0FVhsYVO0Qs9S1bRCgKzkUMCCD6jy', 'Administrator', NULL, 'uyh11UzRcg2Ae7NTMFTG1HifqoAOr8ozii1E1KbDJ3iN9foCUwe1qcnnDU2O', '2023-01-17 02:06:44', '2023-01-17 02:06:44');
-
--- --------------------------------------------------------
-
-
 
 --
 -- Table structure for table `category`
@@ -583,7 +565,9 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `name`, `dob`, `phone_num`, `url`, `point`, `address`) VALUES
 (19, 'Xuan Nang', '2001-07-30', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an'),
-(20, 'Tran Xuan Nang', '2017-01-23', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an');
+(20, 'Tran Xuan Nang', '2017-01-23', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an'),
+(21, 'Hoang Manh Hung', '2023-02-02', '0355860850', NULL, 0, '357 Tam Trinh'),
+(22, 'Hoàng Mạnh Hùng', NULL, '55555', NULL, 0, 'Trần Khát Trân');
 
 -- --------------------------------------------------------
 
@@ -625,7 +609,13 @@ CREATE TABLE `fooditem` (
 
 INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`, `created_at`, `updated_at`) VALUES
 (1, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-1.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(2, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00');
+(2, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(3, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(4, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(5, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(6, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(7, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(8, 2, 'delicious pizza 02', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -637,10 +627,22 @@ CREATE TABLE `foodorder` (
   `id` int(11) NOT NULL,
   `cs_id` int(11) NOT NULL,
   `total_price` float NOT NULL,
-  `note` text NOT NULL,
-  `created_at` date NOT NULL,
+  `note` text DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `foodorder`
+--
+
+INSERT INTO `foodorder` (`id`, `cs_id`, `total_price`, `note`, `created_at`, `status`) VALUES
+(1, 21, 200000, 'k an cay', '2023-02-03 23:04:44', 0),
+(2, 21, 500000, 'dsdfss', '2023-02-03 23:12:39', 0),
+(3, 19, 100000, '', '2023-02-04 00:22:46', 0),
+(4, 22, 300000, '', '2023-02-04 00:28:19', 0),
+(5, 22, 100000, '', '2023-02-04 00:29:29', 0),
+(6, 22, 100000, '', '2023-02-04 00:42:42', 0);
 
 -- --------------------------------------------------------
 
@@ -676,6 +678,20 @@ CREATE TABLE `orderdetail` (
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orderdetail`
+--
+
+INSERT INTO `orderdetail` (`food_id`, `order_id`, `quantity`) VALUES
+(1, 1, 1),
+(2, 1, 1),
+(1, 2, 5),
+(8, 3, 1),
+(1, 4, 2),
+(2, 4, 1),
+(1, 5, 1),
+(3, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -729,7 +745,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `cs_id`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
 (19, 19, 'nang3007@gmail.com', '$2y$10$lyJLaWCz6tX6A1KfnHslfud/hffy1u0fRmPip4GQEWnNyvllzcjrm', 1, '2023-01-28 08:21:56', '2023-01-28 01:21:56'),
-(20, 20, 'nang.tx194633@sis.hust.edu.vn', '$2y$10$YdZhrq.YxAjlktckHr9a1OGG.febmuu3ZvXvCITrJLdlmndFLiJWC', 1, '2023-01-28 09:12:49', '2023-01-28 02:12:49');
+(20, 20, 'nang.tx194633@sis.hust.edu.vn', '$2y$10$YdZhrq.YxAjlktckHr9a1OGG.febmuu3ZvXvCITrJLdlmndFLiJWC', 1, '2023-01-28 09:12:49', '2023-01-28 02:12:49'),
+(21, 21, 'manhhung0601nd@gmail.com', '$2y$10$lluWdoDPSgQmhdUTaJgAfu5aVAHQr0Wyswxuacb4XYJFfARPpqX5.', 1, '2023-02-03 21:20:20', '2023-02-03 14:20:20'),
+(22, 22, 'hung@gmail.com', '$2y$10$9W.cbBTWDcjqS7tDz6YJdulxGdEuPgYaCIWNnbmbExw2yRSctDsjm', 1, '2023-02-04 00:27:17', '2023-02-03 17:27:17');
 
 -- --------------------------------------------------------
 
@@ -895,31 +913,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin_menu`
 --
 ALTER TABLE `admin_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
 --
 ALTER TABLE `admin_permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `admin_roles`
 --
 ALTER TABLE `admin_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -931,7 +949,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -943,13 +961,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `fooditem`
 --
 ALTER TABLE `fooditem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `foodorder`
 --
 ALTER TABLE `foodorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -967,7 +985,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`

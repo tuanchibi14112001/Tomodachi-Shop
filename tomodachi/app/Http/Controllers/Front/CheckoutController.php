@@ -3,27 +3,33 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\User;
 use App\Models\FoodOrder;
 use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
-    public function index(){
-        $customer=User::find(1)->customer;
+    public function index(Request $req){
+        // $customer=User::find(1)->customer;
+        $cs_id=Session::get('customer_id');
+        $customer= Customer::find($cs_id);
         $carts= Cart::content();
         $total= Cart::total();
         return view('front.checkout.checkout',compact('carts','total', 'customer'));
     }
     public function checkoutSubmit(Request $req){
-        $customer=User::find(1)->customer;
+        $cs_id=Session::get('customer_id');
+        $customer= Customer::find($cs_id);
+        $note=$req->note? $req->note : '';
         $carts= Cart::content();
         $order= FoodOrder::create([
             'cs_id' => $customer->id,
             'total_price' =>Cart::total(0,'','') ,
-            'note' => $req->note,
+            'note' => $note,
             'status' => 0
         ]);
         foreach( $carts as $cart){
