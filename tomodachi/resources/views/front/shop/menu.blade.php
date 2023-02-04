@@ -21,17 +21,19 @@
 
     <!-- menu section starts  -->
     @foreach ($categories as $category)
-        @if ($category->FoodItems()->count() > 0)
-            <section class=" section products" id="{{ $category->id }}">
-                <h1 style="margin-bottom: 30px; font-size: large;text-transform: uppercase;">{{ $category->name }}</h1>
-                <div class="box-container">
+        <section class=" section products" id="{{ $category->id }}">
+            <h1 style="margin-bottom: 30px; font-size: large;text-transform: uppercase;">{{ $category->name }}</h1>
+            <div class="box-container">
+                @if ($category->FoodItems()->count() > 0)
                     @foreach ($category->FoodItems as $food)
                         @include('front.components.food_items', ['food_item' => $food])
                     @endforeach
-                </div>
+                @else
+                    <p class="empty">Don't have any food</p>
+                @endif
+            </div>
 
-            </section>
-        @endif
+        </section>
     @endforeach
 
     <script>
@@ -58,7 +60,7 @@
 
                 // Get id of current scroll item
                 var cur = scrollItems.map(function() {
-                    if ($(this).offset().top < fromTop + 100)
+                    if ($(this).offset().top < fromTop + 200)
                         return this;
                 });
                 // Get the id of the current element
