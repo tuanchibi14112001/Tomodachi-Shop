@@ -78,7 +78,7 @@ class FoodItemController extends AdminController
             $options=Arr::add($options,$category->id,$category->name);
         }
         // $form->number('cate_id', __('Category ID'));
-        $form->select('cate_id', __('Category ID'))->options($options);
+        $form->select('cate_id', __('Category'))->options($options);
         // $form->select('cate_id')->options((new Category())::selectOptions());
         $form->text('name', __('Name'));
         $form->number('quantity', __('Quantity'));
