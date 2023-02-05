@@ -2,23 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Category;
-use App\Models\FoodItem;
+use App\Models\User;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-use Encore\Admin\Tree;
 
-
-class CategoryController extends AdminController
+class UserController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Category';
+    protected $title = 'User';
 
     /**
      * Make a grid builder.
@@ -27,11 +24,13 @@ class CategoryController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Category());
+        $grid = new Grid(new User());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
-        $grid->column('image', __('Image'));
+        $grid->column('cs_id', __('Cs id'));
+        $grid->column('email', __('Email'));
+        $grid->column('password', __('Password'));
+        $grid->column('role', __('Role'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -46,11 +45,13 @@ class CategoryController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Category::findOrFail($id));
+        $show = new Show(User::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
-        $show->field('image', __('Image'));
+        $show->field('cs_id', __('Cs id'));
+        $show->field('email', __('Email'));
+        $show->field('password', __('Password'));
+        $show->field('role', __('Role'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -64,15 +65,13 @@ class CategoryController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Category());
-        $form->number('id', __('Id'));
-        // $form->select('id')->options((new Category())::selectOptions());
-        $form->text('name', __('Name')) ->required();
-        
+        $form = new Form(new User());
 
-        $form->image('image', __('Image'));
-        $form->datetime('updated_at',__('Updated At'));
-        
+        $form->number('cs_id', __('Cs id'));
+        $form->email('email', __('Email'));
+        $form->password('password', __('Password'));
+        $form->number('role', __('Role'))->default(1);
+
         return $form;
     }
 }
