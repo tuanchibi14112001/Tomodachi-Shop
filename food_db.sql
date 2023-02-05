@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th2 05, 2023 lúc 11:52 AM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 7.4.25
+-- Thời gian đã tạo: Th2 05, 2023 lúc 02:29 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,8 @@ INSERT INTO `address` (`id`, `name`, `email`, `address`, `phone`) VALUES
 (1, 'Hoang Manh', 'hung01@gmail.com', '33 Trần Khát Trân', '0355860850'),
 (2, 'Hoàng Mạnh Hùng', 'hung@gmail.com', 'Ha Noi', '555556'),
 (3, 'Hoàng Mạnh Hùng', 'hung@gmail.com', 'Trần Khát Trân', '0971528594'),
-(4, 'Hoàng Mạnh Hùng', 'hung@gmail.com', 'Trần Khát Trân', '0971528594');
+(4, 'Hoàng Mạnh Hùng', 'hung@gmail.com', 'Trần Khát Trân', '0971528594'),
+(5, 'Nguyễn Kim Bảo', 'kimbaoksqp@gmail.com', '189 phố Vọng, Hai Bà Trưng, Hà Nội', '0343684430');
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,9 @@ INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `p
 (6, 2, 6, 'Menu', 'fa-bars', 'auth/menu', NULL, NULL, NULL),
 (7, 2, 7, 'Operation log', 'fa-history', 'auth/logs', NULL, NULL, NULL),
 (8, 0, 0, 'Category', 'fa-bookmark-o', '/category', '*', '2023-01-17 02:10:25', '2023-01-17 02:10:25'),
-(9, 0, 0, 'FoodItem', 'fa-ship', '/food-items', '*', '2023-01-18 09:31:49', '2023-01-18 09:41:15');
+(9, 0, 0, 'FoodItem', 'fa-ship', '/food-items', '*', '2023-01-18 09:31:49', '2023-01-18 09:41:15'),
+(10, 0, 0, 'Customer', 'fa-user-plus', '/user', NULL, '2023-02-05 13:20:59', '2023-02-05 13:20:59'),
+(11, 0, 0, 'Order Information', 'fa-cart-plus', '/food-orders', NULL, '2023-02-05 13:21:56', '2023-02-05 13:21:56');
 
 -- --------------------------------------------------------
 
@@ -567,7 +570,25 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (464, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:51:14', '2023-02-05 10:51:14'),
 (465, 1, 'admin/food-items/11/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:51:28', '2023-02-05 10:51:28'),
 (466, 1, 'admin/food-items/11', 'PUT', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"chicken burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"updated_at\":\"2023-02-05 17:20:40\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:51:32', '2023-02-05 10:51:32'),
-(467, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:51:33', '2023-02-05 10:51:33');
+(467, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:51:33', '2023-02-05 10:51:33'),
+(468, 1, 'admin/category', 'GET', '127.0.0.1', '[]', '2023-02-05 13:19:54', '2023-02-05 13:19:54'),
+(469, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:20:35', '2023-02-05 13:20:35'),
+(470, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"0\",\"title\":\"Customer\",\"icon\":\"fa-user-plus\",\"uri\":\"\\/user\",\"roles\":[null],\"permission\":null,\"_token\":\"OcKOJCQWe20SZVh4NzzD3p8QZ2KXNKd7TClrNeGy\"}', '2023-02-05 13:20:59', '2023-02-05 13:20:59'),
+(471, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2023-02-05 13:20:59', '2023-02-05 13:20:59'),
+(472, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2023-02-05 13:21:02', '2023-02-05 13:21:02'),
+(473, 1, 'admin/user', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:21:11', '2023-02-05 13:21:11'),
+(474, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:21:15', '2023-02-05 13:21:15'),
+(475, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"parent_id\":\"0\",\"title\":\"Order Information\",\"icon\":\"fa-cart-plus\",\"uri\":\"\\/food-orders\",\"roles\":[null],\"permission\":null,\"_token\":\"OcKOJCQWe20SZVh4NzzD3p8QZ2KXNKd7TClrNeGy\"}', '2023-02-05 13:21:56', '2023-02-05 13:21:56'),
+(476, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2023-02-05 13:21:56', '2023-02-05 13:21:56'),
+(477, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2023-02-05 13:22:00', '2023-02-05 13:22:00'),
+(478, 1, 'admin/food-orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:22:02', '2023-02-05 13:22:02'),
+(479, 1, 'admin', 'GET', '127.0.0.1', '[]', '2023-02-05 13:22:47', '2023-02-05 13:22:47'),
+(480, 1, 'admin/user', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:22:49', '2023-02-05 13:22:49'),
+(481, 1, 'admin/food-orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:25:40', '2023-02-05 13:25:40'),
+(482, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:26:22', '2023-02-05 13:26:22'),
+(483, 1, 'admin/food-orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:26:53', '2023-02-05 13:26:53'),
+(484, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:26:55', '2023-02-05 13:26:55'),
+(485, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 13:27:12', '2023-02-05 13:27:12');
 
 -- --------------------------------------------------------
 
@@ -763,7 +784,8 @@ INSERT INTO `customer` (`id`, `name`, `dob`, `phone_num`, `url`, `point`, `addre
 (19, 'Xuan Nang', '2001-07-30', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an'),
 (20, 'Tran Xuan Nang', '2017-01-23', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an'),
 (21, 'Hoang Manh Hung', '2023-02-02', '0355860850', NULL, 0, '357 Tam Trinh'),
-(22, 'Hoàng Mạnh Hùng', NULL, '0971528594', NULL, 0, 'Trần Khát Trân');
+(22, 'Hoàng Mạnh Hùng', NULL, '0971528594', NULL, 0, 'Trần Khát Trân'),
+(23, 'Nguyễn Kim Bảo', '2023-02-22', '0343684430', 'https://www.facebook.com/nguyenbao', 0, '189 phố Vọng, Hai Bà Trưng, Hà Nội');
 
 -- --------------------------------------------------------
 
@@ -806,19 +828,19 @@ CREATE TABLE `fooditem` (
 INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`, `created_at`, `updated_at`) VALUES
 (10, 1, 'beef burger', 99, 'good food', 20, 'images/burger-1.png', '2023-02-05 11:16:52', '2023-02-05 10:16:52'),
 (11, 1, 'chicken burger', 99, 'good food', 20, 'images/burger-2.png', '2023-02-05 11:20:40', '2023-02-05 10:20:40'),
-(13, 1, 'lamb burger', 99, 'good food', 20, 'images/feff3b85a021fe7b0251f4cfe9c247b0.png', '2023-02-05 11:23:29', '2023-02-05 10:23:29'),
+(13, 1, 'lamb burger', 98, 'good food', 20, 'images/feff3b85a021fe7b0251f4cfe9c247b0.png', '2023-02-05 11:23:29', '2023-02-05 10:23:29'),
 (14, 2, 'spaghetti', 99, 'good food', 20, 'images/dish-1.png', '2023-02-05 10:25:50', '2023-02-05 10:25:50'),
 (15, 2, 'seafood spaghetti', 99, 'good food', 20, 'images/dish-2.png', '2023-02-05 10:27:12', '2023-02-05 10:27:12'),
 (16, 2, 'pasta', 99, 'good food', 20, 'images/dish-3.png', '2023-02-05 10:28:11', '2023-02-05 10:28:11'),
 (17, 2, 'beef spaghetti', 99, 'good food', 20, 'images/dish-4.png', '2023-02-05 10:29:18', '2023-02-05 10:29:18'),
-(18, 3, 'orange juice', 99, 'good juice', 2, 'images/drink-1.png', '2023-02-05 10:31:10', '2023-02-05 10:31:10'),
+(18, 3, 'orange juice', 98, 'good juice', 2, 'images/drink-1.png', '2023-02-05 10:31:10', '2023-02-05 10:31:10'),
 (19, 3, 'coffee', 20, 'good coffee', 2, 'images/drink-2.png', '2023-02-05 10:32:37', '2023-02-05 10:32:37'),
 (20, 3, 'lemonade', 20, 'low sugar lemonade', 2, 'images/drink-3.png', '2023-02-05 10:33:40', '2023-02-05 10:33:40'),
 (21, 3, 'Strawberry juice', 20, 'very sweet', 3, 'images/drink-5.png', '2023-02-05 10:34:32', '2023-02-05 10:34:32'),
 (22, 4, 'Strawberry ice-cream', 20, 'very sweet', 3, 'images/dessert-1.png', '2023-02-05 10:36:13', '2023-02-05 10:36:13'),
 (23, 4, 'chocolate cake', 99, 'there\'s wine in the cake', 4, 'images/dessert-2.png', '2023-02-05 10:38:13', '2023-02-05 10:38:13'),
 (24, 4, 'cream strawberry cake', 99, 'cream strawberry cake', 4, 'images/dessert-6.png', '2023-02-05 10:40:31', '2023-02-05 10:40:31'),
-(25, 2, 'vegetable pizza', 99, 'a lot of vegetable', 20, 'images/pizza-1.png', '2023-02-05 10:43:25', '2023-02-05 10:43:25'),
+(25, 2, 'vegetable pizza', 98, 'a lot of vegetable', 20, 'images/pizza-1.png', '2023-02-05 10:43:25', '2023-02-05 10:43:25'),
 (26, 2, 'sausage pizza', 99, 'beef sausage', 2, 'images/7170dbe0c99f54d03261ad2664ab3a3a.png', '2023-02-05 10:44:41', '2023-02-05 10:44:41');
 
 -- --------------------------------------------------------
@@ -836,6 +858,13 @@ CREATE TABLE `foodorder` (
   `status` int(11) NOT NULL,
   `address_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `foodorder`
+--
+
+INSERT INTO `foodorder` (`id`, `cs_id`, `total_price`, `note`, `created_at`, `status`, `address_id`) VALUES
+(42, 23, 42, '', '2023-02-05 20:25:21', 0, 5);
 
 -- --------------------------------------------------------
 
@@ -871,6 +900,15 @@ CREATE TABLE `orderdetail` (
   `order_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `orderdetail`
+--
+
+INSERT INTO `orderdetail` (`food_id`, `order_id`, `quantity`) VALUES
+(13, 42, 1),
+(18, 42, 1),
+(25, 42, 1);
 
 --
 -- Bẫy `orderdetail`
@@ -934,7 +972,8 @@ INSERT INTO `user` (`id`, `cs_id`, `email`, `password`, `role`, `created_at`, `u
 (19, 19, 'nang3007@gmail.com', '$2y$10$lyJLaWCz6tX6A1KfnHslfud/hffy1u0fRmPip4GQEWnNyvllzcjrm', 1, '2023-01-28 08:21:56', '2023-01-28 01:21:56'),
 (20, 20, 'nang.tx194633@sis.hust.edu.vn', '$2y$10$YdZhrq.YxAjlktckHr9a1OGG.febmuu3ZvXvCITrJLdlmndFLiJWC', 1, '2023-01-28 09:12:49', '2023-01-28 02:12:49'),
 (21, 21, 'manhhung0601nd@gmail.com', '$2y$10$lluWdoDPSgQmhdUTaJgAfu5aVAHQr0Wyswxuacb4XYJFfARPpqX5.', 1, '2023-02-03 21:20:20', '2023-02-03 14:20:20'),
-(22, 22, 'hung@gmail.com', '$2y$10$9W.cbBTWDcjqS7tDz6YJdulxGdEuPgYaCIWNnbmbExw2yRSctDsjm', 1, '2023-02-04 00:27:17', '2023-02-03 17:27:17');
+(22, 22, 'hung@gmail.com', '$2y$10$9W.cbBTWDcjqS7tDz6YJdulxGdEuPgYaCIWNnbmbExw2yRSctDsjm', 1, '2023-02-04 00:27:17', '2023-02-03 17:27:17'),
+(23, 23, 'kimbaoksqp@gmail.com', '$2y$10$LB6WlRG0DF4Djs7rZpMTAusg74UttKCejwIMBJ5xdlEZz1fKOMviG', 1, '2023-02-05 20:23:14', '2023-02-05 13:23:14');
 
 -- --------------------------------------------------------
 
@@ -1107,19 +1146,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `admin_menu`
 --
 ALTER TABLE `admin_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=468;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=486;
 
 --
 -- AUTO_INCREMENT cho bảng `admin_permissions`
@@ -1149,7 +1188,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -1167,7 +1206,7 @@ ALTER TABLE `fooditem`
 -- AUTO_INCREMENT cho bảng `foodorder`
 --
 ALTER TABLE `foodorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT cho bảng `migrations`
@@ -1185,7 +1224,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
