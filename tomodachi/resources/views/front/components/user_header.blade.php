@@ -30,12 +30,12 @@ $conn = new PDO($db_name, $user_name, $user_password);
 
         <section class="flex">
 
-            <a href="home.php" class="logo">yum-yum 😋</a>
+            <a href="/" class="logo">yum-yum 😋</a>
 
             <nav class="navbar">
                 <a href="/">home</a>
                 <a href="shop/about">about</a>
-                <a href="/shop/menu#1">menu</a>
+                <a href="/shop/menu">menu</a>
                 <a href="{{ route('orders.view') }}">orders</a>
             </nav>
             <div class="icons">

@@ -28,7 +28,9 @@
                                     max="{{ $food->quantity }}" value="1" maxlength="2">
                             @endif
                         </div>
+                        @if ($food->quantity > 0)
                         <p style="font-size: 1.8rem; margin-bottom: 20px" class="empty">quantity: {{ $food->quantity }}</p>
+                        @endif
                         @if ($food->quantity > 0)
                             <button  class="add-to-cart cart-btn">Add To Cart</button>
                         @else

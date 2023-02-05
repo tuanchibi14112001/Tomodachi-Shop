@@ -23,7 +23,7 @@
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, neque debitis incidunt qui ipsum sed
                     doloremque a molestiae in veritatis ullam similique sunt aliquam dolores dolore? Quasi atque debitis
                     nobis!</p>
-                <a href="menu.html" class="btn">our menu</a>
+                <a href="/shop/menu" class="btn">our menu</a>
             </div>
 
         </div>
