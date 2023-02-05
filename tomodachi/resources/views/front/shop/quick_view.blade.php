@@ -15,6 +15,7 @@
                         <input type="hidden" name="name" value="{{ $food->name }} ">
                         <input type="hidden" name="price" value="{{ $food->price }} ">
                         <input type="hidden" name="image" value="{{ $food->url }} ">
+                        <input type="hidden" name="qty_remain" value=" {{ $food->quantity }}">
                         {{ csrf_field() }}
                         <a href="category.php?category={{ $food->category->name }} "
                             class="cat">{{ $food->category->name }} </a>
