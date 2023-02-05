@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\Category;
 use App\Models\FoodItem;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -71,7 +72,9 @@ class FoodItemController extends AdminController
     {
         $form = new Form(new FoodItem());
 
-        $form->number('cate_id', __('Cate id'));
+        $form->number('cate_id', __('Category ID'));
+        // $form->select('cate_name', __('Cate_Name'))->options([1 => 'fast food', 2 => 'bar', 'val' => 'Option name']);
+        // $form->select('cate_id')->options((new Category())::selectOptions());
         $form->text('name', __('Name'));
         $form->number('quantity', __('Quantity'));
         $form->textarea('description', __('Description'));
