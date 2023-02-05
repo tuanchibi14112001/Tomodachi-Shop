@@ -18,8 +18,9 @@
                             <div class="cart_item_info">
                                 <span class="item-name"><b>{{ $cart->name }}</b></span>
                                 <span class="item-price">${{ $cart->price }}</span>
-                                <input type="number" name="qty" class="qty item-quantity qty_oncart_header"
-                                    min="1" max="99" value="{{ $cart->qty }}"
+                                <input id="{{ $cart->id }}" type="number" name="qty"
+                                    class="qty item-quantity qty_oncart_header" min="1"
+                                    max="{{ $cart->options->max_qty }}" value="{{ $cart->qty }}"
                                     rowId="{{ $cart->rowId }}" maxlength="2">
                             </div>
                             <div class="delete_btn">

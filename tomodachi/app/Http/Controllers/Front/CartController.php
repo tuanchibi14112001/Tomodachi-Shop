@@ -17,6 +17,7 @@ class CartController extends Controller
         return view('front.shop.cart',compact('carts','total','subtotal','count'));
     }
     public function add(Request $req){
+        $fooditem=FoodItem::find($req->pid);
         Cart::add([
             'id' => $req->pid,
             'name' => $req->name,
@@ -25,6 +26,7 @@ class CartController extends Controller
             'price' => $req->price,
             'options' => [
                 'image' => $req->image,
+                'max_qty' => $fooditem->quantity
                 ]
         ]);
         // Cart::destroy();
