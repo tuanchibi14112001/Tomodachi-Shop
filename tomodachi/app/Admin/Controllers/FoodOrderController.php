@@ -3,6 +3,9 @@
 namespace App\Admin\Controllers;
 
 use App\Models\FoodOrder;
+use App\Models\Category;
+use App\Models\Address;
+
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -55,14 +58,50 @@ class FoodOrderController extends AdminController
      */
     protected function detail($id)
     {
+        $foodorder =  FoodOrder::findOrFail($id);
+        
         $show = new Show(FoodOrder::findOrFail($id));
-
+        $show->panel()
+    ->tools(function ($tools) {
+        $tools->disableEdit();
+        $tools->disableList();
+        $tools->disableDelete();
+    });;
         $show->field('id', __('Id'));
-        $show->field('cs_id', __('Cs id'));
+        $show->field('address.name', __('Customer Name'));
+        $show->field('address.email', __('Customer Email'));
+        $show->field('address.address', __('Customer Address'));
+        $show->field('address.phone', __('Customer Phone'));
+
+        
+        $show->order_detail('Order Detail', function ($order_detail) {
+            // dd($order_detail);
+            $order_detail->disableActions();
+            $order_detail->disableFilter();
+            $order_detail->disableCreateButton();
+            $order_detail->disableExport();
+            $order_detail->disableColumnSelector();
+            $order_detail->actions(function (Grid\Displayers\Actions $actions) {
+                $actions->disableView();
+                $actions->disableEdit();
+                $actions->disableDelete();
+            });
+            $order_detail->food_item()->name('Food Name');
+            $order_detail->food_item()->price('Price');
+
+            $order_detail->quantity('Quantity');
+
+            
+        });
+        
+        
+        // $show->field('cs_id', __('Cs id'));
         $show->field('total_price', __('Total price'));
         $show->field('note', __('Note'));
         $show->field('created_at', __('Created at'));
-        $show->field('status', __('Status'));
+        // $show->field('status', __('Status'));
+        
+        
 
         return $show;
     }
