@@ -7,7 +7,7 @@
 
         <!--end shopping-cart-header -->
         @if (isset($carts))
-            <ul class="shopping-cart-items">
+            <ul style="overflow:scroll; max-height:400px;" class="shopping-cart-items">
 
                 @foreach ($carts as $cart)
                     <li class="clearfix">

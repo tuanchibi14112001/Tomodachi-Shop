@@ -1308,7 +1308,24 @@ $light-text: #ABB0BE;
 }
 
 
+.food-up-mess {
+   display: none;
+   position: absolute;
+   top: 50px;
+   margin-left: 50%;
+   transform: translateX(-50%);
+   width: 500px;
+   height: 70px;
+   background-color: rgba(0, 128, 0, 0.801);
+   border-radius: 5px;
+   text-align: center;
 
+}
+.food-up-mess p {
+   color: #ffff;
+   margin-top: 30px;
+   font-size: 17px;
+}
 
 .shopping-cart {
 

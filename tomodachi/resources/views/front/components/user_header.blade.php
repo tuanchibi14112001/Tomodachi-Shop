@@ -25,9 +25,10 @@ $conn = new PDO($db_name, $user_name, $user_password);
 </head>
 
 <body>
-
     <header class="header">
-
+        <div class="food-up-mess">
+            <p>test</p>
+        </div>
         <section class="flex">
 
             <a href="/" class="logo">yum-yum 😋</a>

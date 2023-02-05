@@ -88,6 +88,7 @@ function addToCart(req_data) {
             //location.reload();
             $(".icons a span").html("(" + respone.count + ")");
             $(".left_nav").html(respone.view);
+            showPopup("Successfully added to cart");
         },
         error: function () {
             alert("Update fail");
@@ -117,4 +118,12 @@ function updateCart(rowId, newVal, parent) {
             console.log(error);
         },
     });
+}
+
+function showPopup(msg){
+    $(".food-up-mess p").html(msg);
+    $(".food-up-mess").show();    
+    setTimeout(function() {
+        $(".food-up-mess").hide();
+    }, 1000);
 }
