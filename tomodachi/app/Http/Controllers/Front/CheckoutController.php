@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\Customer;
 use App\Models\FoodItem;
 use Illuminate\Http\Request;
@@ -24,19 +25,35 @@ class CheckoutController extends Controller
         return view('front.checkout.checkout',compact('carts','total', 'customer'));
     }
     public function checkoutSubmit(Request $req){
+        $req->validate([
+            'name'=>'required',
+            'mail'=>'required|email',
+            'phone'=>'required|min:6|max:11',
+            'address'=>'required',
+
+        ]);
         $cs_id=Session::get('customer_id');
         $customer= Customer::find($cs_id);
         $note=$req->note? $req->note : '';
         $carts= Cart::content();
         $message="checkout error!!!";
         try {
+
             DB::beginTransaction();
+            $address= Address::create([
+                'name'=> $req->name,
+                'phone' => $req->phone,
+                'email' => $req->mail,
+                'address' => $req->address
+            ]);
             $order= FoodOrder::create([
                 'cs_id' => $customer->id,
                 'total_price' =>Cart::total(0,'','') ,
                 'note' => $note,
-                'status' => 0
+                'status' => 0,
+                'address_id'=>$address->id
             ]);
+            
             foreach( $carts as $cart){
                 $data=[
                     'food_id' => $cart->id,

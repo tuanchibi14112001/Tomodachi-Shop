@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2023 at 08:20 AM
+-- Generation Time: Feb 05, 2023 at 09:42 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `food_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `address`
+--
+
+CREATE TABLE `address` (
+  `id` int(4) NOT NULL,
+  `name` varchar(500) NOT NULL,
+  `email` varchar(500) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `phone` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`id`, `name`, `email`, `address`, `phone`) VALUES
+(1, 'Hoang Manh', 'hung01@gmail.com', '33 Trần Khát Trân', '0355860850');
 
 -- --------------------------------------------------------
 
@@ -530,18 +551,20 @@ CREATE TABLE `admin_user_permissions` (
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `image` varchar(200) DEFAULT NULL
+  `image` varchar(200) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `image`) VALUES
-(1, 'fast food', 'images/cat-1.png'),
-(2, 'main dishes', 'images/cat-2.png'),
-(3, 'drinks', 'images/cat-3.png'),
-(4, 'desserts', 'images/cat-4.png');
+INSERT INTO `category` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'fast food', 'images/cat-1.png', '2023-02-05 15:08:49', NULL),
+(2, 'main dishes', 'images/cat-2.png', '2023-02-05 15:08:49', NULL),
+(3, 'drinks', 'images/cat-3.png', '2023-02-05 15:08:49', NULL),
+(4, 'desserts', 'images/cat-4.png', '2023-02-05 15:08:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -611,8 +634,8 @@ INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `pri
 (1, 1, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-1.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (2, 1, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (3, 2, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(4, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(5, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(4, 2, 'delicious pizza 01', 1, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(5, 2, 'delicious pizza 01', 1, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (6, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (7, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (8, 2, 'delicious pizza 02', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00');
@@ -629,23 +652,16 @@ CREATE TABLE `foodorder` (
   `total_price` float NOT NULL,
   `note` text DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `address_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `foodorder`
 --
 
-INSERT INTO `foodorder` (`id`, `cs_id`, `total_price`, `note`, `created_at`, `status`) VALUES
-(1, 21, 200000, 'k an cay', '2023-02-03 23:04:44', 0),
-(2, 21, 500000, 'dsdfss', '2023-02-03 23:12:39', 0),
-(3, 19, 100000, '', '2023-02-04 00:22:46', 0),
-(4, 22, 300000, '', '2023-02-04 00:28:19', 0),
-(5, 22, 100000, '', '2023-02-04 00:29:29', 0),
-(6, 22, 100000, '', '2023-02-04 00:42:42', 0),
-(7, 22, 300000, 'hahaha', '2023-02-05 12:06:43', 0),
-(36, 22, 200000, '', '2023-02-05 13:33:09', 0),
-(37, 22, 400000, '', '2023-02-05 14:16:03', 0);
+INSERT INTO `foodorder` (`id`, `cs_id`, `total_price`, `note`, `created_at`, `status`, `address_id`) VALUES
+(38, 22, 200000, 'k dau', '2023-02-05 15:22:24', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -687,19 +703,8 @@ CREATE TABLE `orderdetail` (
 --
 
 INSERT INTO `orderdetail` (`food_id`, `order_id`, `quantity`) VALUES
-(1, 1, 1),
-(2, 1, 1),
-(1, 2, 5),
-(8, 3, 1),
-(1, 4, 2),
-(2, 4, 1),
-(1, 5, 1),
-(3, 6, 1),
-(1, 7, 2),
-(5, 7, 1),
-(1, 36, 2),
-(2, 37, 2),
-(3, 37, 2);
+(4, 38, 1),
+(5, 38, 1);
 
 --
 -- Triggers `orderdetail`
@@ -785,6 +790,12 @@ CREATE TABLE `users` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admin_menu`
@@ -877,7 +888,8 @@ ALTER TABLE `fooditem`
 --
 ALTER TABLE `foodorder`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `cs_id_fk` (`cs_id`);
+  ADD KEY `cs_id_fk` (`cs_id`),
+  ADD KEY `address_id_fk` (`address_id`);
 
 --
 -- Indexes for table `migrations`
@@ -924,6 +936,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `address`
+--
+ALTER TABLE `address`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admin_menu`
@@ -983,7 +1001,7 @@ ALTER TABLE `fooditem`
 -- AUTO_INCREMENT for table `foodorder`
 --
 ALTER TABLE `foodorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1023,6 +1041,7 @@ ALTER TABLE `fooditem`
 -- Constraints for table `foodorder`
 --
 ALTER TABLE `foodorder`
+  ADD CONSTRAINT `address_id_fk` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cs_id_fk` FOREIGN KEY (`cs_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
