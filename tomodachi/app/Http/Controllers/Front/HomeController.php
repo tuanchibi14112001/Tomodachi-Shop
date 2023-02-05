@@ -19,7 +19,7 @@ class HomeController extends Controller
         // dd($new_foods);
         $carts=Cart::content();
         $cart_total=Cart::total();
-        $slide_foods= FoodItem::where('quantity' ,'>', 0)->orderByDESC('created_at')->limit(5)->get();
+        $slide_foods= FoodItem::where('quantity' ,'>', 0)->where('price','>',10)->orderByDESC('created_at')->limit(5)->get();
         return view('front.home', [
             'categories' => $categories,
             'new_foods'  => $new_foods,

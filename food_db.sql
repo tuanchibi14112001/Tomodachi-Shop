@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 05, 2023 at 09:42 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.25
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th2 05, 2023 lúc 11:52 AM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `food_db`
+-- Cơ sở dữ liệu: `food_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `address`
+-- Cấu trúc bảng cho bảng `address`
 --
 
 CREATE TABLE `address` (
@@ -36,16 +36,19 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `address`
+-- Đang đổ dữ liệu cho bảng `address`
 --
 
 INSERT INTO `address` (`id`, `name`, `email`, `address`, `phone`) VALUES
-(1, 'Hoang Manh', 'hung01@gmail.com', '33 Trần Khát Trân', '0355860850');
+(1, 'Hoang Manh', 'hung01@gmail.com', '33 Trần Khát Trân', '0355860850'),
+(2, 'Hoàng Mạnh Hùng', 'hung@gmail.com', 'Ha Noi', '555556'),
+(3, 'Hoàng Mạnh Hùng', 'hung@gmail.com', 'Trần Khát Trân', '0971528594'),
+(4, 'Hoàng Mạnh Hùng', 'hung@gmail.com', 'Trần Khát Trân', '0971528594');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_menu`
+-- Cấu trúc bảng cho bảng `admin_menu`
 --
 
 CREATE TABLE `admin_menu` (
@@ -61,7 +64,7 @@ CREATE TABLE `admin_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_menu`
+-- Đang đổ dữ liệu cho bảng `admin_menu`
 --
 
 INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `permission`, `created_at`, `updated_at`) VALUES
@@ -78,7 +81,7 @@ INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_operation_log`
+-- Cấu trúc bảng cho bảng `admin_operation_log`
 --
 
 CREATE TABLE `admin_operation_log` (
@@ -93,7 +96,7 @@ CREATE TABLE `admin_operation_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_operation_log`
+-- Đang đổ dữ liệu cho bảng `admin_operation_log`
 --
 
 INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
@@ -394,12 +397,182 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (295, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-03 09:35:54', '2023-02-03 09:35:54'),
 (296, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-03 09:35:56', '2023-02-03 09:35:56'),
 (297, 1, 'admin/auth/setting', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-03 09:36:02', '2023-02-03 09:36:02'),
-(298, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-03 09:36:11', '2023-02-03 09:36:11');
+(298, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-03 09:36:11', '2023-02-03 09:36:11'),
+(299, 1, 'admin', 'GET', '127.0.0.1', '[]', '2023-02-05 09:12:54', '2023-02-05 09:12:54'),
+(300, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:04', '2023-02-05 09:13:04'),
+(301, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:14', '2023-02-05 09:13:14'),
+(302, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:20', '2023-02-05 09:13:20'),
+(303, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:24', '2023-02-05 09:13:24'),
+(304, 1, 'admin/auth/users', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:28', '2023-02-05 09:13:28'),
+(305, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:35', '2023-02-05 09:13:35'),
+(306, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:42', '2023-02-05 09:13:42'),
+(307, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:44', '2023-02-05 09:13:44'),
+(308, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:50', '2023-02-05 09:13:50'),
+(309, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:51', '2023-02-05 09:13:51'),
+(310, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:56', '2023-02-05 09:13:56'),
+(311, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:58', '2023-02-05 09:13:58'),
+(312, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:13:59', '2023-02-05 09:13:59'),
+(313, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:14:00', '2023-02-05 09:14:00'),
+(314, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:14:13', '2023-02-05 09:14:13'),
+(315, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:14:16', '2023-02-05 09:14:16'),
+(316, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:14:18', '2023-02-05 09:14:18'),
+(317, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:15:16', '2023-02-05 09:15:16'),
+(318, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:15:18', '2023-02-05 09:15:18'),
+(319, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:16:43', '2023-02-05 09:16:43'),
+(320, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:16:45', '2023-02-05 09:16:45'),
+(321, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:16:52', '2023-02-05 09:16:52'),
+(322, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:16:59', '2023-02-05 09:16:59'),
+(323, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:17:02', '2023-02-05 09:17:02'),
+(324, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:17:04', '2023-02-05 09:17:04'),
+(325, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:17:09', '2023-02-05 09:17:09'),
+(326, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:17:11', '2023-02-05 09:17:11'),
+(327, 1, 'admin/food-orders', 'GET', '127.0.0.1', '[]', '2023-02-05 09:17:48', '2023-02-05 09:17:48'),
+(328, 1, 'admin/food-orders/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:05', '2023-02-05 09:18:05'),
+(329, 1, 'admin/food-orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:08', '2023-02-05 09:18:08'),
+(330, 1, 'admin/food-orders/38', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:13', '2023-02-05 09:18:13'),
+(331, 1, 'admin/food-orders', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:18', '2023-02-05 09:18:18'),
+(332, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:26', '2023-02-05 09:18:26'),
+(333, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:27', '2023-02-05 09:18:27'),
+(334, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:29', '2023-02-05 09:18:29'),
+(335, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:30', '2023-02-05 09:18:30'),
+(336, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:34', '2023-02-05 09:18:34'),
+(337, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:39', '2023-02-05 09:18:39'),
+(338, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:18:42', '2023-02-05 09:18:42'),
+(339, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:19:04', '2023-02-05 09:19:04'),
+(340, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:19:12', '2023-02-05 09:19:12');
+INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `input`, `created_at`, `updated_at`) VALUES
+(341, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:20:17', '2023-02-05 09:20:17'),
+(342, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:20:26', '2023-02-05 09:20:26'),
+(343, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:20:28', '2023-02-05 09:20:28'),
+(344, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:20:30', '2023-02-05 09:20:30'),
+(345, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:20:32', '2023-02-05 09:20:32'),
+(346, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:20:52', '2023-02-05 09:20:52'),
+(347, 1, 'admin/category/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:20:54', '2023-02-05 09:20:54'),
+(348, 1, 'admin/category', 'POST', '127.0.0.1', '{\"name\":\"vegetable\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/category\"}', '2023-02-05 09:22:10', '2023-02-05 09:22:10'),
+(349, 1, 'admin/category', 'GET', '127.0.0.1', '[]', '2023-02-05 09:22:10', '2023-02-05 09:22:10'),
+(350, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:22:35', '2023-02-05 09:22:35'),
+(351, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:22:37', '2023-02-05 09:22:37'),
+(352, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:22:44', '2023-02-05 09:22:44'),
+(353, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:22:47', '2023-02-05 09:22:47'),
+(354, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 09:22:49', '2023-02-05 09:22:49'),
+(355, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"5\",\"name\":\"vegetable-1\",\"quantity\":\"15\",\"description\":\"tuoi sach\",\"price\":\"2000\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 09:23:46', '2023-02-05 09:23:46'),
+(356, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 09:23:46', '2023-02-05 09:23:46'),
+(357, 1, 'admin', 'GET', '127.0.0.1', '[]', '2023-02-05 10:01:42', '2023-02-05 10:01:42'),
+(358, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:01:48', '2023-02-05 10:01:48'),
+(359, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:01:57', '2023-02-05 10:01:57'),
+(360, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:02:00', '2023-02-05 10:02:00'),
+(361, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:02:05', '2023-02-05 10:02:05'),
+(362, 1, 'admin/food-items/1,2,3,4,5,6,7,8,9', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"NRn3knWUBmAGQhPQdTD5nBH5tQGaz5JWVZ0WocJ8\"}', '2023-02-05 10:02:27', '2023-02-05 10:02:27'),
+(363, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:02:27', '2023-02-05 10:02:27'),
+(364, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:02:30', '2023-02-05 10:02:30'),
+(365, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:02:31', '2023-02-05 10:02:31'),
+(366, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:05:55', '2023-02-05 10:05:55'),
+(367, 1, 'admin', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:05:56', '2023-02-05 10:05:56'),
+(368, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:05:59', '2023-02-05 10:05:59'),
+(369, 1, 'admin', 'GET', '127.0.0.1', '[]', '2023-02-05 10:13:07', '2023-02-05 10:13:07'),
+(370, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:13:20', '2023-02-05 10:13:20'),
+(371, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:15:54', '2023-02-05 10:15:54'),
+(372, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:15:56', '2023-02-05 10:15:56'),
+(373, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:16:04', '2023-02-05 10:16:04'),
+(374, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:16:05', '2023-02-05 10:16:05'),
+(375, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:16:07', '2023-02-05 10:16:07'),
+(376, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"burger-1\",\"quantity\":\"99\",\"description\":\"ngon l\\u1eafm\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:16:52', '2023-02-05 10:16:52'),
+(377, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:16:52', '2023-02-05 10:16:52'),
+(378, 1, 'admin/food-items/10/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:18:07', '2023-02-05 10:18:07'),
+(379, 1, 'admin/food-items/10', 'PUT', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"burger-1\",\"quantity\":\"0\",\"description\":\"ngon l\\u1eafm\",\"price\":\"20\",\"updated_at\":\"2023-02-05 17:16:52\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:18:51', '2023-02-05 10:18:51'),
+(380, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:18:52', '2023-02-05 10:18:52'),
+(381, 1, 'admin/food-items/10/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:19:15', '2023-02-05 10:19:15'),
+(382, 1, 'admin/food-items/10', 'PUT', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"beef burger\",\"quantity\":\"99\",\"description\":\"ngon l\\u1eafm\",\"price\":\"20\",\"updated_at\":\"2023-02-05 17:16:52\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:19:35', '2023-02-05 10:19:35'),
+(383, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:19:36', '2023-02-05 10:19:36'),
+(384, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:19:43', '2023-02-05 10:19:43'),
+(385, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"chicken burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:20:40', '2023-02-05 10:20:40'),
+(386, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:20:41', '2023-02-05 10:20:41'),
+(387, 1, 'admin/food-items/10/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:20:44', '2023-02-05 10:20:44'),
+(388, 1, 'admin/food-items/10', 'PUT', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"beef burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"updated_at\":\"2023-02-05 17:16:52\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:20:51', '2023-02-05 10:20:51'),
+(389, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:20:51', '2023-02-05 10:20:51'),
+(390, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:21:08', '2023-02-05 10:21:08'),
+(391, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"cheese burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:21:55', '2023-02-05 10:21:55'),
+(392, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:21:56', '2023-02-05 10:21:56'),
+(393, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:22:03', '2023-02-05 10:22:03'),
+(394, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"lamb burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":null,\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:23:14', '2023-02-05 10:23:14'),
+(395, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:23:14', '2023-02-05 10:23:14'),
+(396, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"lamb burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\"}', '2023-02-05 10:23:29', '2023-02-05 10:23:29'),
+(397, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:23:30', '2023-02-05 10:23:30'),
+(398, 1, 'admin/_handle_action_', 'POST', '127.0.0.1', '{\"_key\":\"12\",\"_model\":\"App_Models_FoodItem\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_action\":\"Encore_Admin_Grid_Actions_Delete\",\"_input\":\"true\"}', '2023-02-05 10:24:26', '2023-02-05 10:24:26'),
+(399, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:24:27', '2023-02-05 10:24:27'),
+(400, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:24:29', '2023-02-05 10:24:29'),
+(401, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:24:32', '2023-02-05 10:24:32'),
+(402, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:24:34', '2023-02-05 10:24:34'),
+(403, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:24:39', '2023-02-05 10:24:39'),
+(404, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"2\",\"name\":\"spaghetti\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:25:50', '2023-02-05 10:25:50'),
+(405, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:25:50', '2023-02-05 10:25:50'),
+(406, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"2\",\"name\":\"seafood spaghetti\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\"}', '2023-02-05 10:27:12', '2023-02-05 10:27:12'),
+(407, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:27:12', '2023-02-05 10:27:12'),
+(408, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"2\",\"name\":\"pasta\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\"}', '2023-02-05 10:28:11', '2023-02-05 10:28:11'),
+(409, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:28:11', '2023-02-05 10:28:11'),
+(410, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"2\",\"name\":\"beef spaghetti\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\"}', '2023-02-05 10:29:18', '2023-02-05 10:29:18'),
+(411, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:29:18', '2023-02-05 10:29:18'),
+(412, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:30:10', '2023-02-05 10:30:10'),
+(413, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:30:12', '2023-02-05 10:30:12'),
+(414, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:30:14', '2023-02-05 10:30:14'),
+(415, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"3\",\"name\":\"orange juice\",\"quantity\":\"99\",\"description\":\"good juice\",\"price\":\"2\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:31:10', '2023-02-05 10:31:10'),
+(416, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:31:10', '2023-02-05 10:31:10'),
+(417, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"3\",\"name\":\"coffee\",\"quantity\":\"20\",\"description\":\"good coffee\",\"price\":\"2\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\"}', '2023-02-05 10:32:37', '2023-02-05 10:32:37'),
+(418, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:32:38', '2023-02-05 10:32:38'),
+(419, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"3\",\"name\":\"lemonade\",\"quantity\":\"20\",\"description\":\"low sugar lemonade\",\"price\":\"2\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\"}', '2023-02-05 10:33:40', '2023-02-05 10:33:40'),
+(420, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:33:40', '2023-02-05 10:33:40'),
+(421, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:33:44', '2023-02-05 10:33:44'),
+(422, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"3\",\"name\":\"Strawberry juice\",\"quantity\":\"20\",\"description\":\"very sweet\",\"price\":\"3\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:34:32', '2023-02-05 10:34:32'),
+(423, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:34:32', '2023-02-05 10:34:32'),
+(424, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:34:56', '2023-02-05 10:34:56'),
+(425, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:34:59', '2023-02-05 10:34:59'),
+(426, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:35:05', '2023-02-05 10:35:05'),
+(427, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"4\",\"name\":\"Strawberry ice-cream\",\"quantity\":\"20\",\"description\":\"very sweet\",\"price\":\"3\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"after-save\":\"2\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:36:13', '2023-02-05 10:36:13'),
+(428, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:36:13', '2023-02-05 10:36:13'),
+(429, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"5\",\"name\":\"chocolate cake\",\"quantity\":\"99\",\"description\":\"there\'s wine in the cake\",\"price\":\"4\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\"}', '2023-02-05 10:38:13', '2023-02-05 10:38:13'),
+(430, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:38:13', '2023-02-05 10:38:13'),
+(431, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:38:35', '2023-02-05 10:38:35'),
+(432, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:38:47', '2023-02-05 10:38:47'),
+(433, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:38:49', '2023-02-05 10:38:49'),
+(434, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:38:52', '2023-02-05 10:38:52'),
+(435, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"4\",\"name\":\"cream strawberry cake\",\"quantity\":\"99\",\"description\":\"cream strawberry cake\",\"price\":\"4\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:40:31', '2023-02-05 10:40:31'),
+(436, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:40:31', '2023-02-05 10:40:31'),
+(437, 1, 'admin/food-items/24/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:41:13', '2023-02-05 10:41:13'),
+(438, 1, 'admin/food-items/24', 'PUT', '127.0.0.1', '{\"cate_id\":\"3\",\"name\":\"cream strawberry cake\",\"quantity\":\"99\",\"description\":\"cream strawberry cake\",\"price\":\"4\",\"updated_at\":\"2023-02-05 17:40:31\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:41:18', '2023-02-05 10:41:18'),
+(439, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:41:18', '2023-02-05 10:41:18'),
+(440, 1, 'admin/food-items/23/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:41:47', '2023-02-05 10:41:47'),
+(441, 1, 'admin/food-items/23', 'PUT', '127.0.0.1', '{\"cate_id\":\"4\",\"name\":\"chocolate cake\",\"quantity\":\"99\",\"description\":\"there\'s wine in the cake\",\"price\":\"4\",\"updated_at\":\"2023-02-05 17:38:13\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:41:52', '2023-02-05 10:41:52'),
+(442, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:41:52', '2023-02-05 10:41:52'),
+(443, 1, 'admin/food-items/24/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:42:00', '2023-02-05 10:42:00'),
+(444, 1, 'admin/food-items/24', 'PUT', '127.0.0.1', '{\"cate_id\":\"4\",\"name\":\"cream strawberry cake\",\"quantity\":\"99\",\"description\":\"cream strawberry cake\",\"price\":\"4\",\"updated_at\":\"2023-02-05 17:40:31\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:42:05', '2023-02-05 10:42:05'),
+(445, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:42:05', '2023-02-05 10:42:05'),
+(446, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:42:16', '2023-02-05 10:42:16'),
+(447, 1, 'admin/_handle_action_', 'POST', '127.0.0.1', '{\"_key\":\"5\",\"_model\":\"App_Models_Category\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_action\":\"Encore_Admin_Grid_Actions_Delete\",\"_input\":\"true\"}', '2023-02-05 10:42:25', '2023-02-05 10:42:25'),
+(448, 1, 'admin/category', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:42:25', '2023-02-05 10:42:25'),
+(449, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:42:28', '2023-02-05 10:42:28'),
+(450, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:42:30', '2023-02-05 10:42:30'),
+(451, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"2\",\"name\":\"vegetable pizza\",\"quantity\":\"99\",\"description\":\"a lot of vegetable\",\"price\":\"20\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:43:25', '2023-02-05 10:43:25'),
+(452, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:43:26', '2023-02-05 10:43:26'),
+(453, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:43:40', '2023-02-05 10:43:40'),
+(454, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"2\",\"name\":\"sausage pizza\",\"quantity\":null,\"description\":\"beef sausage\",\"price\":\"2\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:44:27', '2023-02-05 10:44:27'),
+(455, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '[]', '2023-02-05 10:44:27', '2023-02-05 10:44:27'),
+(456, 1, 'admin/food-items', 'POST', '127.0.0.1', '{\"cate_id\":\"2\",\"name\":\"sausage pizza\",\"quantity\":\"99\",\"description\":\"beef sausage\",\"price\":\"2\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\"}', '2023-02-05 10:44:41', '2023-02-05 10:44:41'),
+(457, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:44:41', '2023-02-05 10:44:41'),
+(458, 1, 'admin/food-items/create', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:45:09', '2023-02-05 10:45:09'),
+(459, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:45:21', '2023-02-05 10:45:21'),
+(460, 1, 'admin/food-items/10/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:46:32', '2023-02-05 10:46:32'),
+(461, 1, 'admin/food-items', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:46:42', '2023-02-05 10:46:42'),
+(462, 1, 'admin/food-items/11/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:51:08', '2023-02-05 10:51:08'),
+(463, 1, 'admin/food-items/11', 'PUT', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"chicken burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"2\",\"updated_at\":\"2023-02-05 17:20:40\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:51:14', '2023-02-05 10:51:14'),
+(464, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:51:14', '2023-02-05 10:51:14'),
+(465, 1, 'admin/food-items/11/edit', 'GET', '127.0.0.1', '{\"_pjax\":\"#pjax-container\"}', '2023-02-05 10:51:28', '2023-02-05 10:51:28'),
+(466, 1, 'admin/food-items/11', 'PUT', '127.0.0.1', '{\"cate_id\":\"1\",\"name\":\"chicken burger\",\"quantity\":\"99\",\"description\":\"good food\",\"price\":\"20\",\"updated_at\":\"2023-02-05 17:20:40\",\"_token\":\"pLtIDamYe6mtWr92ORjBiIjOTN4qMy4hrNkgmkmL\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/127.0.0.1:8000\\/admin\\/food-items\"}', '2023-02-05 10:51:32', '2023-02-05 10:51:32'),
+(467, 1, 'admin/food-items', 'GET', '127.0.0.1', '[]', '2023-02-05 10:51:33', '2023-02-05 10:51:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_permissions`
+-- Cấu trúc bảng cho bảng `admin_permissions`
 --
 
 CREATE TABLE `admin_permissions` (
@@ -413,7 +586,7 @@ CREATE TABLE `admin_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_permissions`
+-- Đang đổ dữ liệu cho bảng `admin_permissions`
 --
 
 INSERT INTO `admin_permissions` (`id`, `name`, `slug`, `http_method`, `http_path`, `created_at`, `updated_at`) VALUES
@@ -426,7 +599,7 @@ INSERT INTO `admin_permissions` (`id`, `name`, `slug`, `http_method`, `http_path
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_roles`
+-- Cấu trúc bảng cho bảng `admin_roles`
 --
 
 CREATE TABLE `admin_roles` (
@@ -438,7 +611,7 @@ CREATE TABLE `admin_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_roles`
+-- Đang đổ dữ liệu cho bảng `admin_roles`
 --
 
 INSERT INTO `admin_roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
@@ -447,7 +620,7 @@ INSERT INTO `admin_roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_role_menu`
+-- Cấu trúc bảng cho bảng `admin_role_menu`
 --
 
 CREATE TABLE `admin_role_menu` (
@@ -458,7 +631,7 @@ CREATE TABLE `admin_role_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_role_menu`
+-- Đang đổ dữ liệu cho bảng `admin_role_menu`
 --
 
 INSERT INTO `admin_role_menu` (`role_id`, `menu_id`, `created_at`, `updated_at`) VALUES
@@ -468,7 +641,7 @@ INSERT INTO `admin_role_menu` (`role_id`, `menu_id`, `created_at`, `updated_at`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_role_permissions`
+-- Cấu trúc bảng cho bảng `admin_role_permissions`
 --
 
 CREATE TABLE `admin_role_permissions` (
@@ -479,7 +652,7 @@ CREATE TABLE `admin_role_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_role_permissions`
+-- Đang đổ dữ liệu cho bảng `admin_role_permissions`
 --
 
 INSERT INTO `admin_role_permissions` (`role_id`, `permission_id`, `created_at`, `updated_at`) VALUES
@@ -488,7 +661,7 @@ INSERT INTO `admin_role_permissions` (`role_id`, `permission_id`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_role_users`
+-- Cấu trúc bảng cho bảng `admin_role_users`
 --
 
 CREATE TABLE `admin_role_users` (
@@ -499,7 +672,7 @@ CREATE TABLE `admin_role_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_role_users`
+-- Đang đổ dữ liệu cho bảng `admin_role_users`
 --
 
 INSERT INTO `admin_role_users` (`role_id`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -508,7 +681,7 @@ INSERT INTO `admin_role_users` (`role_id`, `user_id`, `created_at`, `updated_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_users`
+-- Cấu trúc bảng cho bảng `admin_users`
 --
 
 CREATE TABLE `admin_users` (
@@ -523,7 +696,7 @@ CREATE TABLE `admin_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `admin_users`
+-- Đang đổ dữ liệu cho bảng `admin_users`
 --
 
 INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -532,7 +705,7 @@ INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `reme
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_user_permissions`
+-- Cấu trúc bảng cho bảng `admin_user_permissions`
 --
 
 CREATE TABLE `admin_user_permissions` (
@@ -545,7 +718,7 @@ CREATE TABLE `admin_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
@@ -557,7 +730,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category`
+-- Đang đổ dữ liệu cho bảng `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
@@ -569,7 +742,7 @@ INSERT INTO `category` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Cấu trúc bảng cho bảng `customer`
 --
 
 CREATE TABLE `customer` (
@@ -583,19 +756,19 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `customer`
+-- Đang đổ dữ liệu cho bảng `customer`
 --
 
 INSERT INTO `customer` (`id`, `name`, `dob`, `phone_num`, `url`, `point`, `address`) VALUES
 (19, 'Xuan Nang', '2001-07-30', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an'),
 (20, 'Tran Xuan Nang', '2017-01-23', '0333501404', 'https://www.facebook.com/xuan.nang.9404', 0, 'Xa quynh Long, huyen quynh luu, tinh nghe an'),
 (21, 'Hoang Manh Hung', '2023-02-02', '0355860850', NULL, 0, '357 Tam Trinh'),
-(22, 'Hoàng Mạnh Hùng', NULL, '55555', NULL, 0, 'Trần Khát Trân');
+(22, 'Hoàng Mạnh Hùng', NULL, '0971528594', NULL, 0, 'Trần Khát Trân');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Cấu trúc bảng cho bảng `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -611,7 +784,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fooditem`
+-- Cấu trúc bảng cho bảng `fooditem`
 --
 
 CREATE TABLE `fooditem` (
@@ -627,23 +800,31 @@ CREATE TABLE `fooditem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `fooditem`
+-- Đang đổ dữ liệu cho bảng `fooditem`
 --
 
 INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`, `created_at`, `updated_at`) VALUES
-(1, 1, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-1.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(2, 1, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(3, 2, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(4, 2, 'delicious pizza 01', 1, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(5, 2, 'delicious pizza 01', 1, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(6, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(7, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(8, 2, 'delicious pizza 02', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00');
+(10, 1, 'beef burger', 99, 'good food', 20, 'images/burger-1.png', '2023-02-05 11:16:52', '2023-02-05 10:16:52'),
+(11, 1, 'chicken burger', 99, 'good food', 20, 'images/burger-2.png', '2023-02-05 11:20:40', '2023-02-05 10:20:40'),
+(13, 1, 'lamb burger', 99, 'good food', 20, 'images/feff3b85a021fe7b0251f4cfe9c247b0.png', '2023-02-05 11:23:29', '2023-02-05 10:23:29'),
+(14, 2, 'spaghetti', 99, 'good food', 20, 'images/dish-1.png', '2023-02-05 10:25:50', '2023-02-05 10:25:50'),
+(15, 2, 'seafood spaghetti', 99, 'good food', 20, 'images/dish-2.png', '2023-02-05 10:27:12', '2023-02-05 10:27:12'),
+(16, 2, 'pasta', 99, 'good food', 20, 'images/dish-3.png', '2023-02-05 10:28:11', '2023-02-05 10:28:11'),
+(17, 2, 'beef spaghetti', 99, 'good food', 20, 'images/dish-4.png', '2023-02-05 10:29:18', '2023-02-05 10:29:18'),
+(18, 3, 'orange juice', 99, 'good juice', 2, 'images/drink-1.png', '2023-02-05 10:31:10', '2023-02-05 10:31:10'),
+(19, 3, 'coffee', 20, 'good coffee', 2, 'images/drink-2.png', '2023-02-05 10:32:37', '2023-02-05 10:32:37'),
+(20, 3, 'lemonade', 20, 'low sugar lemonade', 2, 'images/drink-3.png', '2023-02-05 10:33:40', '2023-02-05 10:33:40'),
+(21, 3, 'Strawberry juice', 20, 'very sweet', 3, 'images/drink-5.png', '2023-02-05 10:34:32', '2023-02-05 10:34:32'),
+(22, 4, 'Strawberry ice-cream', 20, 'very sweet', 3, 'images/dessert-1.png', '2023-02-05 10:36:13', '2023-02-05 10:36:13'),
+(23, 4, 'chocolate cake', 99, 'there\'s wine in the cake', 4, 'images/dessert-2.png', '2023-02-05 10:38:13', '2023-02-05 10:38:13'),
+(24, 4, 'cream strawberry cake', 99, 'cream strawberry cake', 4, 'images/dessert-6.png', '2023-02-05 10:40:31', '2023-02-05 10:40:31'),
+(25, 2, 'vegetable pizza', 99, 'a lot of vegetable', 20, 'images/pizza-1.png', '2023-02-05 10:43:25', '2023-02-05 10:43:25'),
+(26, 2, 'sausage pizza', 99, 'beef sausage', 2, 'images/7170dbe0c99f54d03261ad2664ab3a3a.png', '2023-02-05 10:44:41', '2023-02-05 10:44:41');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `foodorder`
+-- Cấu trúc bảng cho bảng `foodorder`
 --
 
 CREATE TABLE `foodorder` (
@@ -656,17 +837,10 @@ CREATE TABLE `foodorder` (
   `address_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `foodorder`
---
-
-INSERT INTO `foodorder` (`id`, `cs_id`, `total_price`, `note`, `created_at`, `status`, `address_id`) VALUES
-(38, 22, 200000, 'k dau', '2023-02-05 15:22:24', 0, 1);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Cấu trúc bảng cho bảng `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -676,7 +850,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Đang đổ dữ liệu cho bảng `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -689,7 +863,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderdetail`
+-- Cấu trúc bảng cho bảng `orderdetail`
 --
 
 CREATE TABLE `orderdetail` (
@@ -699,15 +873,7 @@ CREATE TABLE `orderdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `orderdetail`
---
-
-INSERT INTO `orderdetail` (`food_id`, `order_id`, `quantity`) VALUES
-(4, 38, 1),
-(5, 38, 1);
-
---
--- Triggers `orderdetail`
+-- Bẫy `orderdetail`
 --
 DELIMITER $$
 CREATE TRIGGER `check_qty_trigger` BEFORE INSERT ON `orderdetail` FOR EACH ROW UPDATE fooditem SET fooditem.quantity = fooditem.quantity-NEW.quantity WHERE fooditem.id = NEW.food_id
@@ -717,7 +883,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Cấu trúc bảng cho bảng `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -729,7 +895,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Cấu trúc bảng cho bảng `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -747,7 +913,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -761,7 +927,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`id`, `cs_id`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
@@ -773,7 +939,7 @@ INSERT INTO `user` (`id`, `cs_id`, `email`, `password`, `role`, `created_at`, `u
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -788,30 +954,30 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `address`
+-- Chỉ mục cho bảng `address`
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `admin_menu`
+-- Chỉ mục cho bảng `admin_menu`
 --
 ALTER TABLE `admin_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `admin_operation_log`
+-- Chỉ mục cho bảng `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_operation_log_user_id_index` (`user_id`);
 
 --
--- Indexes for table `admin_permissions`
+-- Chỉ mục cho bảng `admin_permissions`
 --
 ALTER TABLE `admin_permissions`
   ADD PRIMARY KEY (`id`),
@@ -819,7 +985,7 @@ ALTER TABLE `admin_permissions`
   ADD UNIQUE KEY `admin_permissions_slug_unique` (`slug`);
 
 --
--- Indexes for table `admin_roles`
+-- Chỉ mục cho bảng `admin_roles`
 --
 ALTER TABLE `admin_roles`
   ADD PRIMARY KEY (`id`),
@@ -827,64 +993,64 @@ ALTER TABLE `admin_roles`
   ADD UNIQUE KEY `admin_roles_slug_unique` (`slug`);
 
 --
--- Indexes for table `admin_role_menu`
+-- Chỉ mục cho bảng `admin_role_menu`
 --
 ALTER TABLE `admin_role_menu`
   ADD KEY `admin_role_menu_role_id_menu_id_index` (`role_id`,`menu_id`);
 
 --
--- Indexes for table `admin_role_permissions`
+-- Chỉ mục cho bảng `admin_role_permissions`
 --
 ALTER TABLE `admin_role_permissions`
   ADD KEY `admin_role_permissions_role_id_permission_id_index` (`role_id`,`permission_id`);
 
 --
--- Indexes for table `admin_role_users`
+-- Chỉ mục cho bảng `admin_role_users`
 --
 ALTER TABLE `admin_role_users`
   ADD KEY `admin_role_users_role_id_user_id_index` (`role_id`,`user_id`);
 
 --
--- Indexes for table `admin_users`
+-- Chỉ mục cho bảng `admin_users`
 --
 ALTER TABLE `admin_users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `admin_users_username_unique` (`username`);
 
 --
--- Indexes for table `admin_user_permissions`
+-- Chỉ mục cho bảng `admin_user_permissions`
 --
 ALTER TABLE `admin_user_permissions`
   ADD KEY `admin_user_permissions_user_id_permission_id_index` (`user_id`,`permission_id`);
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `customer`
+-- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `failed_jobs`
+-- Chỉ mục cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `fooditem`
+-- Chỉ mục cho bảng `fooditem`
 --
 ALTER TABLE `fooditem`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cate_fk` (`cate_id`);
 
 --
--- Indexes for table `foodorder`
+-- Chỉ mục cho bảng `foodorder`
 --
 ALTER TABLE `foodorder`
   ADD PRIMARY KEY (`id`),
@@ -892,26 +1058,26 @@ ALTER TABLE `foodorder`
   ADD KEY `address_id_fk` (`address_id`);
 
 --
--- Indexes for table `migrations`
+-- Chỉ mục cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orderdetail`
+-- Chỉ mục cho bảng `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD PRIMARY KEY (`order_id`,`food_id`),
   ADD KEY `food_id` (`food_id`);
 
 --
--- Indexes for table `password_resets`
+-- Chỉ mục cho bảng `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `personal_access_tokens`
+-- Chỉ mục cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -919,7 +1085,7 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -927,132 +1093,132 @@ ALTER TABLE `user`
   ADD KEY `cs_id` (`cs_id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `address`
+-- AUTO_INCREMENT cho bảng `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `admin_menu`
+-- AUTO_INCREMENT cho bảng `admin_menu`
 --
 ALTER TABLE `admin_menu`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `admin_operation_log`
+-- AUTO_INCREMENT cho bảng `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=468;
 
 --
--- AUTO_INCREMENT for table `admin_permissions`
+-- AUTO_INCREMENT cho bảng `admin_permissions`
 --
 ALTER TABLE `admin_permissions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `admin_roles`
+-- AUTO_INCREMENT cho bảng `admin_roles`
 --
 ALTER TABLE `admin_roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `admin_users`
+-- AUTO_INCREMENT cho bảng `admin_users`
 --
 ALTER TABLE `admin_users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `fooditem`
+-- AUTO_INCREMENT cho bảng `fooditem`
 --
 ALTER TABLE `fooditem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `foodorder`
+-- AUTO_INCREMENT cho bảng `foodorder`
 --
 ALTER TABLE `foodorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `fooditem`
+-- Các ràng buộc cho bảng `fooditem`
 --
 ALTER TABLE `fooditem`
   ADD CONSTRAINT `cate_fk` FOREIGN KEY (`cate_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `foodorder`
+-- Các ràng buộc cho bảng `foodorder`
 --
 ALTER TABLE `foodorder`
   ADD CONSTRAINT `address_id_fk` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cs_id_fk` FOREIGN KEY (`cs_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orderdetail`
+-- Các ràng buộc cho bảng `orderdetail`
 --
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `fooditem` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `foodorder` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `user`
+-- Các ràng buộc cho bảng `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`cs_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
