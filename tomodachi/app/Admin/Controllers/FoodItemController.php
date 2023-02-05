@@ -28,8 +28,8 @@ class FoodItemController extends AdminController
     {
         $grid = new Grid(new FoodItem());
 
-        $grid->column('id', __('Id'));
-        $grid->column('cate_id', __('Cate id'));
+        // $grid->column('id', __('Id'));
+        $grid->column('category.name', __('Category'));
         $grid->column('name', __('Name'));
         $grid->column('quantity', __('Quantity'));
         $grid->column('description', __('Description'));
@@ -50,9 +50,9 @@ class FoodItemController extends AdminController
     protected function detail($id)
     {
         $show = new Show(FoodItem::findOrFail($id));
-
+    
         $show->field('id', __('Id'));
-        $show->field('cate_id', __('Cate id'));
+        $show->field('category.name', __('Category'));
         $show->field('name', __('Name'));
         $show->field('quantity', __('Quantity'));
         $show->field('description', __('Description'));
@@ -85,7 +85,7 @@ class FoodItemController extends AdminController
         $form->textarea('description', __('Description'));
         $form->decimal('price', __('Price'));
         $form->image('url', __('Image'));
-        $form->datetime('updated_at',__('Updated At'));
+        $form->datetime('updated_at',__('Updated At'))->default(date('Y-m-d H:i:s'));
 
         return $form;
     }

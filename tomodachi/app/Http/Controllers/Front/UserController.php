@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Session;
 use Hash;
 
 
@@ -19,15 +20,16 @@ class UserController extends Controller
 
     public function updateProfile()
     {
-        return view('front.user.update_profile');
+        $customer_id= Session::get('customer_id');
+        $customer=Customer::find($customer_id);
+        return view('front.user.update_profile',compact('customer'));
     }
 
     public function updateProfilePost(Request $request)
     {
         $request->validate([
             'name' => 'max:50',
-            'number'=>'required|min:6|max:11',
-        ]);
+            ]);
         
         $customer_id = $request['cs_id'];
         $customer = Customer::where('id', '=', $customer_id)->first();

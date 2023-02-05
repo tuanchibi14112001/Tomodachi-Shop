@@ -29,8 +29,8 @@ class FoodOrderController extends AdminController
     {
         $grid = new Grid(new FoodOrder());
 
-        $grid->column('id', __('Id'));
-        $grid->column('cs_id', __('Cs id'));
+        $grid->column('customer.name', __('Customer name'));
+        //$grid->column('cs_id', __('Cs id'));
         // $grid->column('total_price', __('Price'))->totalRow();
         $grid->column('total_price')->totalRow(function ($amount) {
 
@@ -39,11 +39,16 @@ class FoodOrderController extends AdminController
         });
         $grid->column('note', __('Note'));
         $grid->column('created_at', __('Created at'));
-        $grid->column('status', __('Status'));
+        //$grid->column('status', __('Status'));
         $grid->filter(function($filter){
             $filter->month('created_at', 'Month');
 
         });
+        $grid->disableCreateButton();
+        $grid->actions(function (Grid\Displayers\Actions $actions) {
+            $actions->disableEdit();
+        });
+
        
         
 

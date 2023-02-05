@@ -29,7 +29,7 @@ class CategoryController extends AdminController
     {
         $grid = new Grid(new Category());
 
-        $grid->column('id', __('Id'));
+        // $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
         $grid->column('image', __('Image'));
         $grid->column('created_at', __('Created at'));
@@ -71,7 +71,7 @@ class CategoryController extends AdminController
         
 
         $form->image('image', __('Image'));
-        $form->datetime('updated_at',__('Updated At'));
+        $form->datetime('updated_at',__('Updated At'))->default(date('Y-m-d H:i:s'));
         
         return $form;
     }
