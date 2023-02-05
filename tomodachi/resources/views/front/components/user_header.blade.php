@@ -41,7 +41,7 @@ $conn = new PDO($db_name, $user_name, $user_password);
             <div class="icons">
                 <a href="{{ route('search') }}"><i class="fas fa-search icon"></i></a>
                 <a href="#" id="cart"
-                    class="show-cart icon @if (Route::current()->getName() == 'cart.index') disabled @endif"><i
+                    class="show-cart icon @if (Route::current()->getName() == 'cart.index' || Route::current()->getName() == 'checkout') disabled @endif"><i
                         class="fas fa-shopping-cart"></i><span>({{ Cart::count() }})</span></a>
 
                 <div id="user-btn" class="fas fa-user icon"></div>

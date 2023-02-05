@@ -50,6 +50,7 @@ $(document).ready(function () {
         const name = form.find('input[name="name"]').val();
         const price = form.find('input[name="price"]').val();
         const image = form.find('input[name="image"]').val();
+        const remain_qty = form.find('input[name="qty_remain"]').val();
         const qty = form.find(".qty").val();
         const req_data = {
             pid: pid,
@@ -59,7 +60,14 @@ $(document).ready(function () {
             qty: qty,
         };
         //console.log(req_data);
-        addToCart(req_data);
+        if (qty === undefined) alert("out of stock");
+        else {
+            let qty_oncart = $("#" + pid).val();
+            if (qty_oncart === undefined) qty_oncart = 0;
+            if (Number(qty) + Number(qty_oncart) > Number(remain_qty)) {
+                alert("out of stock");
+            } else addToCart(req_data);
+        }
         //cart = document.getElementsByClassName("show-cart");
     });
     //cart quantity change
