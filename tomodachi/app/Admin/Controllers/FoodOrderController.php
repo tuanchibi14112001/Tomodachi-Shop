@@ -28,10 +28,21 @@ class FoodOrderController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('cs_id', __('Cs id'));
-        $grid->column('total_price', __('Total price'));
+        // $grid->column('total_price', __('Price'))->totalRow();
+        $grid->column('total_price')->totalRow(function ($amount) {
+
+            return "<span class='text-danger text-bold'><i class='fa fa-dolar-sign'></i> Total : {$amount} </span>" ;
+        
+        });
         $grid->column('note', __('Note'));
         $grid->column('created_at', __('Created at'));
         $grid->column('status', __('Status'));
+        $grid->filter(function($filter){
+            $filter->month('created_at', 'Month');
+
+        });
+       
+        
 
         return $grid;
     }

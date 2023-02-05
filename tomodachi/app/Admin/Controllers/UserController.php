@@ -29,8 +29,8 @@ class UserController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('cs_id', __('Cs id'));
         $grid->column('email', __('Email'));
-        $grid->column('password', __('Password'));
-        $grid->column('role', __('Role'));
+        // $grid->column('password', __('Password'));
+        // $grid->column('role', __('Role'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -50,8 +50,8 @@ class UserController extends AdminController
         $show->field('id', __('Id'));
         $show->field('cs_id', __('Cs id'));
         $show->field('email', __('Email'));
-        $show->field('password', __('Password'));
-        $show->field('role', __('Role'));
+        // $show->field('password', __('Password'));
+        // $show->field('role', __('Role'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
