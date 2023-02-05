@@ -53,9 +53,6 @@
                     <p><i class="fas fa-dollar-sign"></i><select name="method" class="box payment_select" required>
                             <option value="" disabled selected>select payment method --</option>
                             <option value="cash on delivery">cash on delivery</option>
-                            <option value="credit card">credit card</option>
-                            <option value="paytm">paytm</option>
-                            <option value="paypal">paypal</option>
                         </select>
                     </p>
                     @php
