@@ -8,6 +8,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Illuminate\Support\Arr;
 
 class FoodItemController extends AdminController
 {
@@ -71,9 +72,13 @@ class FoodItemController extends AdminController
     protected function form()
     {
         $form = new Form(new FoodItem());
-
-        $form->number('cate_id', __('Category ID'));
-        // $form->select('cate_name', __('Cate_Name'))->options([1 => 'fast food', 2 => 'bar', 'val' => 'Option name']);
+        $categorys=Category::all();
+        $options=array();
+        foreach($categorys as $category){
+            $options=Arr::add($options,$category->id,$category->name);
+        }
+        // $form->number('cate_id', __('Category ID'));
+        $form->select('cate_id', __('Category ID'))->options($options);
         // $form->select('cate_id')->options((new Category())::selectOptions());
         $form->text('name', __('Name'));
         $form->number('quantity', __('Quantity'));
