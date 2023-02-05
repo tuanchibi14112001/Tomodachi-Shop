@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2023 at 06:55 PM
+-- Generation Time: Feb 05, 2023 at 08:20 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -595,7 +595,7 @@ CREATE TABLE `fooditem` (
   `id` int(11) NOT NULL,
   `cate_id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT 0,
+  `quantity` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `description` text NOT NULL,
   `price` float NOT NULL,
   `url` text NOT NULL,
@@ -608,9 +608,9 @@ CREATE TABLE `fooditem` (
 --
 
 INSERT INTO `fooditem` (`id`, `cate_id`, `name`, `quantity`, `description`, `price`, `url`, `created_at`, `updated_at`) VALUES
-(1, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-1.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(2, 1, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
-(3, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(1, 1, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-1.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(2, 1, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
+(3, 2, 'delicious pizza 01', 0, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (4, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (5, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
 (6, 2, 'delicious pizza 01', 2, 'ngon lam', 100000, 'images/burger-2.png', '2023-01-15 17:00:00', '2023-01-15 17:00:00'),
@@ -642,7 +642,10 @@ INSERT INTO `foodorder` (`id`, `cs_id`, `total_price`, `note`, `created_at`, `st
 (3, 19, 100000, '', '2023-02-04 00:22:46', 0),
 (4, 22, 300000, '', '2023-02-04 00:28:19', 0),
 (5, 22, 100000, '', '2023-02-04 00:29:29', 0),
-(6, 22, 100000, '', '2023-02-04 00:42:42', 0);
+(6, 22, 100000, '', '2023-02-04 00:42:42', 0),
+(7, 22, 300000, 'hahaha', '2023-02-05 12:06:43', 0),
+(36, 22, 200000, '', '2023-02-05 13:33:09', 0),
+(37, 22, 400000, '', '2023-02-05 14:16:03', 0);
 
 -- --------------------------------------------------------
 
@@ -691,7 +694,20 @@ INSERT INTO `orderdetail` (`food_id`, `order_id`, `quantity`) VALUES
 (1, 4, 2),
 (2, 4, 1),
 (1, 5, 1),
-(3, 6, 1);
+(3, 6, 1),
+(1, 7, 2),
+(5, 7, 1),
+(1, 36, 2),
+(2, 37, 2),
+(3, 37, 2);
+
+--
+-- Triggers `orderdetail`
+--
+DELIMITER $$
+CREATE TRIGGER `check_qty_trigger` BEFORE INSERT ON `orderdetail` FOR EACH ROW UPDATE fooditem SET fooditem.quantity = fooditem.quantity-NEW.quantity WHERE fooditem.id = NEW.food_id
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -967,7 +983,7 @@ ALTER TABLE `fooditem`
 -- AUTO_INCREMENT for table `foodorder`
 --
 ALTER TABLE `foodorder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `migrations`
