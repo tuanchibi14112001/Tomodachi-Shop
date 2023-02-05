@@ -15,11 +15,11 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         //dd($category);
-        $new_foods =  FoodItem::orderByDESC('created_at')->limit(6)->get();
+        $new_foods =  FoodItem::where('quantity' ,'>', 0)->orderByDESC('created_at')->limit(6)->get();
         // dd($new_foods);
         $carts=Cart::content();
         $cart_total=Cart::total();
-        $slide_foods= FoodItem::orderByDESC('created_at')->limit(5)->get();
+        $slide_foods= FoodItem::where('quantity' ,'>', 0)->orderByDESC('created_at')->limit(5)->get();
         return view('front.home', [
             'categories' => $categories,
             'new_foods'  => $new_foods,
