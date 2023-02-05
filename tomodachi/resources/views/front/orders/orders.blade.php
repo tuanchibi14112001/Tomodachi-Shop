@@ -25,10 +25,10 @@
                 @foreach ($orders as $order)
                     <div class="box">
                         <p>placed on : <span>{{ $order->created_at }}</span></p>
-                        <p>name : <span>{{ $order->customer->name }}</span></p>
-                        <p>email : <span>{{ $order->customer->user->email }}</span></p>
-                        <p>number : <span>{{ $order->customer->phone_num }}</span></p>
-                        <p>address : <span>{{ $order->customer->address }}</span></p>
+                        <p>name : <span>{{ $order->address->name }}</span></p>
+                        <p>email : <span>{{ $order->address->email }}</span></p>
+                        <p>number : <span>{{ $order->address->phone }}</span></p>
+                        <p>address : <span>{{ $order->address->address }}</span></p>
                         {{-- <p>payment method : <span><?= $fetch_orders['method'] ?></span></p> --}}
                         <p>your orders :
                         <ul style="list-style: none;font-size:2rem">
@@ -37,6 +37,7 @@
                             @endforeach
                         </ul>
                         </p>
+                        <p>note : <span>{{ $order->note }}</span></p>
                         <p>total price : <span>${{ $order->total_price }}</span></p>
                         {{-- <p> payment status : <span
                                 style="color:<?php if ($fetch_orders['payment_status'] == 'pending') {

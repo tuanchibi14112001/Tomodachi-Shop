@@ -37,17 +37,30 @@
                         <textarea name="note" form="checkout_form" class="order-note" placeholder="Note for cheef"></textarea>
                     </div>
                     <h3>your info</h3>
-                    <p><i class="fas fa-user"></i><input readonly type="text"
-                            name="name"value="{{ $customer->name }}" /></p>
-                    <p><i class="fas fa-phone"></i><input readonly type="text" name="phone"
-                            value=" {{ $customer->phone_num }}" />
+                    <p><i class="fas fa-user"></i><input required type="text"
+                            name="name"value="{{ old('name') ? old('name') : $customer->name }}" /></p>
+                    @if ($errors->has('name'))
+                        <p style="color: red; font-size:14px">{{ $errors->first('name') }}</p>
+                    @endif
+                    <p><i class="fas fa-phone"></i><input required type="text" name="phone"
+                            value=" {{ old('phone') ? old('phone') : $customer->phone_num }}" />
                     </p>
-                    <p><i class="fas fa-envelope"></i><input readonly type="text" name="mail"
-                            value="{{ $customer->user->email }}" />
+                    @if ($errors->has('phone'))
+                        <p style="color: red; font-size:14px">{{ $errors->first('phone') }}</p>
+                    @endif
+                    <p><i class="fas fa-envelope"></i><input required type="text" name="mail"
+                            value="{{ old('mail') ? old('mail') : $customer->user->email }}" />
                     </p>
+                    @if ($errors->has('mail'))
+                        <p style="color: red; font-size:14px">{{ $errors->first('mail') }}</p>
+                    @endif
                     <h3>delivery address</h3>
-                    <p><i class="fas fa-map-marker-alt"></i><input readonly value="{{ $customer->address }}" type="text"
+                    <p><i class="fas fa-map-marker-alt"></i><input required
+                            value="{{ old('address') ? old('address') : $customer->address }}" type="text"
                             name="address" /></p>
+                    @if ($errors->has('address'))
+                        <p style="color: red; font-size:14px">{{ $errors->first('address') }}</p>
+                    @endif
                     <a href="{{ url('profile/update_profile?cs_id=' . $customer->id) }}" class="btn">update info</a>
 
                     <p><i class="fas fa-dollar-sign"></i><select name="method" class="box payment_select" required>

@@ -15,6 +15,9 @@ class FoodOrder extends Model
     public function customer(){
         return $this->belongsTo(Customer::class, 'cs_id', 'id');
     } 
+    public function address(){
+        return $this->belongsTo(Address::class, 'address_id', 'id');
+    } 
     public function order_detail(){
         return $this->hasMany(OrderDetail::class,'order_id','id');
     }
