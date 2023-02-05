@@ -26,6 +26,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'max:50',
+            'number'=>'required|min:6|max:11',
         ]);
         
         $customer_id = $request['cs_id'];

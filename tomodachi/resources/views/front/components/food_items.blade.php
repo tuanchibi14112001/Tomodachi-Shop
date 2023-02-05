@@ -8,7 +8,7 @@
     <a href="/shop/quick_view/food_id={{ $food_item->id }}" class="fas fa-eye"></a>
     <a href="" class="add-to-cart fas fa-shopping-cart"></a>
     <img src="uploads/{{ $food_item->url }}" alt="">
-    <a href="/shop/menu/{{ $food_item->category['id'] }}" class="cat">
+    <a href="/shop/menu#{{ $food_item->category['id'] }}" class="cat">
         {{ $food_item->category['name'] }}</a>
     <div class="name"> {{ $food_item->name }}</div>
     <div class="flex">
@@ -16,8 +16,9 @@
         @if ($food_item->quantity > 0)
             <input type="number" name="qty" class="qty" min="1" max="{{ $food_item->quantity }}"
                 value="1" maxlength="2">
+                <div style="font-size: 1.8rem;">/{{$food_item->quantity}}</div>
         @else
-            <p style="color: red; font-size: 16px
+            <p style="color: red; font-size: 20px
             ">out of stock</p>
         @endif
     </div>

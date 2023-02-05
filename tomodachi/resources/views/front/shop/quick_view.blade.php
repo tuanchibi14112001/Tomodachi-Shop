@@ -17,16 +17,23 @@
                         <input type="hidden" name="image" value="{{ $food->url }} ">
                         <input type="hidden" name="qty_remain" value=" {{ $food->quantity }}">
                         {{ csrf_field() }}
-                        <a href="category.php?category={{ $food->category->name }} "
-                            class="cat">{{ $food->category->name }} </a>
+                        <a href="/shop/menu#{{ $food->category['id'] }}" class="cat">{{ $food->category->name }} </a>
                         <div class="name">{{ $food->name }} </div>
                         <p class="descript">{{ $food->description }}</p>
                         <div class="flex">
+
                             <div class="price"><span>$</span>{{ $food->price }}</div>
-                            <input type="number" name="qty" class="qty" min="1" max="99" value="1"
-                                maxlength="2">
+                            @if ($food->quantity > 0)
+                                <input type="number" name="qty" class="qty" min="1"
+                                    max="{{ $food->quantity }}" value="1" maxlength="2">
+                            @endif
                         </div>
-                        <a href="" class="add-to-cart cart-btn">Add To Cart</a>
+                        <p style="font-size: 1.8rem; margin-bottom: 20px" class="empty">quantity: {{ $food->quantity }}</p>
+                        @if ($food->quantity > 0)
+                            <button  class="add-to-cart cart-btn">Add To Cart</button>
+                        @else
+                            <p class="empty">out of stock</p>
+                        @endif
 
                     </form>
                 </div>

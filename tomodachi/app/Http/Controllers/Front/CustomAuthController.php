@@ -50,7 +50,7 @@ class CustomAuthController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:user',
-            'number'=>'required',
+            'number'=>'required|min:6|max:11',
             'password'=>'required|min:6|max:20',
             'cpass'=>'required|same:password',
 
