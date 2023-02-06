@@ -3,7 +3,7 @@
 @section('body')
     <section class="hero">
 
-        <div class="swiper hero-slider">
+        <div class="swiper hero-slider ">
 
             <div class="swiper-wrapper">
                 @foreach ($slide_foods as $slide_food)
@@ -22,6 +22,11 @@
             </div>
 
             <div class="swiper-pagination"></div>
+            {{-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- If we need scrollbar -->
+            <div class="swiper-scrollbar"></div> --}}
 
         </div>
 

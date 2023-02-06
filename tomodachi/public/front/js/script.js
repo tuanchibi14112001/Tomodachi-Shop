@@ -26,6 +26,12 @@ function fadeOut() {
 }
 
 window.onload = fadeOut;
+const swiper = new Swiper(".swiper", {
+    autoplay: {
+        delay: 2000,
+    },
+});
+swiper.loop = true;
 
 document.querySelectorAll('input[type="number"]').forEach((numberInput) => {
     numberInput.oninput = () => {
@@ -37,6 +43,7 @@ document.querySelectorAll('input[type="number"]').forEach((numberInput) => {
     };
 });
 $(document).ready(function () {
+    swiper.autoplay.start();
     $(".show-cart").click(function (e) {
         //console.log("check");
         e.preventDefault();
@@ -120,10 +127,10 @@ function updateCart(rowId, newVal, parent) {
     });
 }
 
-function showPopup(msg){
+function showPopup(msg) {
     $(".food-up-mess p").html(msg);
-    $(".food-up-mess").show();    
-    setTimeout(function() {
+    $(".food-up-mess").show();
+    setTimeout(function () {
         $(".food-up-mess").hide();
     }, 1000);
 }
