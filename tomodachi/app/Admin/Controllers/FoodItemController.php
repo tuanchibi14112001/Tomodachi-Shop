@@ -34,7 +34,7 @@ class FoodItemController extends AdminController
         $grid->column('quantity', __('Quantity'));
         $grid->column('description', __('Description'));
         $grid->column('price', __('Price'));
-        $grid->column('url', __('Image'));
+        //$grid->column('url', __('Image'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -80,7 +80,7 @@ class FoodItemController extends AdminController
         // $form->number('cate_id', __('Category ID'));
         $form->select('cate_id', __('Category'))->options($options)->required();
         // $form->select('cate_id')->options((new Category())::selectOptions());
-        $form->text('name', __('Name')) ->required();
+        $form->text('name', __('Name')) ->required()->creationRules(['required', "unique:fooditem"]);
         $form->number('quantity', __('Quantity')) ->required()->min(1);
         $form->textarea('description', __('Description'));
         $form->number('price', __('Price'))->required()->min(1);

@@ -39,13 +39,23 @@
                         </p>
                         <p>note : <span>{{ $order->note }}</span></p>
                         <p>total price : <span>${{ $order->total_price }}</span></p>
-                        {{-- <p> payment status : <span
-                                style="color:<?php if ($fetch_orders['payment_status'] == 'pending') {
-                                    echo 'red';
-                                } else {
-                                    echo 'green';
-                                } ?>"><?= $fetch_orders['payment_status'] ?></span>
-                        </p> --}}
+
+                        @switch($order->status)
+                            @case(0)
+                                <p>stauts : <span style="color:gray;">pending</span></p>
+                            @break
+
+                            @case(1)
+                                <p>stauts : <span style="color:green;">success</span></p>
+                            @break
+
+                            @case(2)
+                                <p>stauts : <span style="color:red;">cancel</span></p>
+                            @break
+
+                            @default
+                            @break
+                        @endswitch
                     </div>
                 @endforeach
             @else

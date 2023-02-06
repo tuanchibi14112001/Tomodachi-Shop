@@ -67,7 +67,7 @@ class CategoryController extends AdminController
         $form = new Form(new Category());
         $form->number('id', __('Id'));
         // $form->select('id')->options((new Category())::selectOptions());
-        $form->text('name', __('Name')) ->required();
+        $form->text('name', __('Name')) ->required()->creationRules(['required', "unique:category"]);
         
 
         $form->image('image', __('Image'))->required();
