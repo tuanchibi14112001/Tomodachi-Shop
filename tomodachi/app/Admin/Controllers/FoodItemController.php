@@ -78,13 +78,13 @@ class FoodItemController extends AdminController
             $options=Arr::add($options,$category->id,$category->name);
         }
         // $form->number('cate_id', __('Category ID'));
-        $form->select('cate_id', __('Category'))->options($options);
+        $form->select('cate_id', __('Category'))->options($options)->required();
         // $form->select('cate_id')->options((new Category())::selectOptions());
-        $form->text('name', __('Name'));
-        $form->number('quantity', __('Quantity'));
+        $form->text('name', __('Name')) ->required();
+        $form->number('quantity', __('Quantity')) ->required()->min(1);
         $form->textarea('description', __('Description'));
-        $form->decimal('price', __('Price'));
-        $form->image('url', __('Image'));
+        $form->number('price', __('Price'))->required()->min(1);
+        $form->image('url', __('Image'))->required();
         $form->datetime('updated_at',__('Updated At'))->default(date('Y-m-d H:i:s'));
 
         return $form;

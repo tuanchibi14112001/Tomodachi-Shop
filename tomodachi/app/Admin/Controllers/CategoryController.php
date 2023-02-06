@@ -70,7 +70,7 @@ class CategoryController extends AdminController
         $form->text('name', __('Name')) ->required();
         
 
-        $form->image('image', __('Image'));
+        $form->image('image', __('Image'))->required();
         $form->datetime('updated_at',__('Updated At'))->default(date('Y-m-d H:i:s'));
         
         return $form;
